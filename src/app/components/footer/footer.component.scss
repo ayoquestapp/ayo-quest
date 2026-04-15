@@ -1,0 +1,81 @@
+.footer {
+    background: linear-gradient(135deg,
+        #0a0f28 0%,
+        #1f4e79 50%,
+        #00aaff 100%
+    );
+
+    height: 220px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5em 2em;
+    font-family: 'Saira', sans-serif;
+
+    hr {
+        border: 0;
+        border-top: 1px solid white;
+        margin: 0.8em 0;
+        width: 100%;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+
+        .colum-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+
+            .links {
+                ul {
+                    display: flex;
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    gap: 0.8rem;
+
+                    li {
+                        a {
+                            color: #fff;
+                            font-size: 1.3rem;
+                            transition: transform 0.2s, color 0.3s;
+                            border: 1px solid white;
+                            border-radius: 50%;
+                            padding: 0.45rem;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            text-decoration: none;
+
+                            &:hover {
+                                transform: scale(1.1);
+                                color: #337ab7;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .colum-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            color: white;
+
+            p {
+                color: white;
+                margin: 0;
+                font-size: 0.95rem;
+            }
+        }
+    }
+}

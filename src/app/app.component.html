@@ -1,0 +1,7 @@
+<app-header></app-header>
+<main 
+  class="page-content" 
+  [class.no-header]="isLogged">
+  <router-outlet></router-outlet>
+</main>
+<app-footer *ngIf="isHomePage"></app-footer>

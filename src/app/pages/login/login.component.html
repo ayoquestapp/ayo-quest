@@ -1,0 +1,26 @@
+<section>
+    <div class="container">
+        <aside class="side-bar">
+            <form [formGroup]="loginForm" autocomplete="off">
+                <span class="p-float-label">
+                    <input id="email" type="email" pInputText formControlName="email" autocomplete="new-email"
+                        placeholder=" " />
+                    <label for="email">Email</label>
+                </span>
+
+                <span class="p-float-label">
+                    <input id="password" type="password" pInputText formControlName="password"
+                        autocomplete="new-password" placeholder=" " />
+                    <label for="password">Senha</label>
+                </span>
+                <p-button type="submit" [loading]="loading" label="Entrar" (click)="onSubmit()">
+                    <i *ngIf="!loading" class="fa-solid fa-circle-user"></i>
+                </p-button>
+                <p [routerLink]="['/cadastro']">Ainda não tem cadastro?<br>
+                    crie sua conta!
+                </p>
+            </form>
+        </aside>
+        <img src="../../../assets/bg-home.png" alt="">
+    </div>
+</section>

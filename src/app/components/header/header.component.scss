@@ -1,0 +1,211 @@
+.header {
+  background-color: #1F2147;
+  color: #fff;
+  font-family: "Exo", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+
+  ::ng-deep .p-toolbar {
+    background: transparent;
+    border: none;
+    display: flex; // <-- aqui
+    flex-wrap: nowrap;
+    justify-content: space-around; // <-- aqui
+    align-items: center;
+    width: 100%;
+    gap: 3em;
+    min-height: 80px;
+    padding: 0 1rem; // opcional para espaçamento lateral
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+
+    img {
+      cursor: pointer;
+      height: 59px;
+      width: 217px;
+    }
+
+    ::ng-deep .p-divider.p-divider-vertical {
+      margin: 0 1rem;
+      border-color: rgba(255, 255, 255, 0.4);
+      height: 59px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      margin-left: 3em;
+
+      a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 500;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: color 0.25s ease, transform 0.25s ease;
+
+        &:hover {
+          color: #337ab7;  
+          transform: scale(1.1);
+        }
+
+        &.active {
+          color: #337ab7;
+          font-size: 1rem;
+          transform: scale(1.08);
+        }
+      }
+    }
+  }
+
+  .search-container {
+    display: flex;
+    align-items: center;
+
+    ::ng-deep .p-inputtext {
+      border-radius: 20px;
+      padding: 0.5rem 1rem 0.5rem 2rem; // espaço extra para não sobrepor o ícone
+      border: none;
+      outline: none;
+
+      &::placeholder {
+        color: #aaa;
+        font-family: "Quicksand", sans-serif;
+      }
+    }
+
+    input {
+      outline: none;
+      font-family: "Quicksand";
+    }
+
+    ::ng-deep .pi-search {
+      color: #337ab7;
+    }
+
+    ::ng-deep .pi-iconfield::placeholder {
+      margin-left: 25px;
+    }
+  }
+
+  .social-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    ::ng-deep .p-button {
+      background: linear-gradient(135deg, #337ab7, #5fa8e0);
+      font-weight: 400;
+      font-family: 'Exo', 'sans-serif';
+      border-radius: 8px;
+      height: 44px;
+      padding: 0.5rem 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      box-shadow: 0 4px 3px rgba(0, 0, 0, 0.3);
+      color: white;
+      cursor: pointer;
+
+      // Prepara o botão para a animação
+      background-size: 100% auto;
+      transition: transform 0.2s ease-out, background-position 0.5s ease-in-out;
+
+      i {
+        font-size: 1.2rem;
+      }
+
+      // &:hover {
+      //   // Aciona a animação e o efeito de crescimento
+      //   animation: pulse 0.8s ease-in-out;
+      //   transform: scale(1.05);
+      // }
+    }
+
+    ::ng-deep p-button.login-active .p-button {
+      background-color: transparent !important;
+      background-image:
+        linear-gradient(#5e49e2, #5e49e2),
+        linear-gradient(135deg, #337ab7, #5fa8e0);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+
+      border: 2px solid transparent !important;
+      border-radius: 12px;
+    }
+
+    ::ng-deep p-button.login-active .p-button-label,
+    ::ng-deep p-button.login-active .p-button i {
+      background: white;
+      background-clip: text;
+      -webkit-background-clip: text;
+
+
+      color: transparent !important;
+      -webkit-text-fill-color: transparent !important;
+
+      font-weight: 600;
+    }
+
+    ::ng-deep .p-button.login-active:hover {
+      transform: scale(1.05);
+      transition: transform 0.2s ease;
+    }
+
+
+    // // Keyframe aprimorado para um efeito de pulso/deslize do gradiente
+    // @keyframes pulse {
+    //   from {
+    //     background: linear-gradient(to right, #f72586, #fec045);
+    //   }
+
+    //   to {
+    //     background: linear-gradient(to right, #fec045, #f72586);
+    //   }
+    // }
+  }
+
+
+}
+
+
+
+
+.links {
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1rem;
+
+    li {
+      a {
+        color: #fff;
+        font-size: 1.3rem;
+        transition: transform 0.2s, color 0.3s;
+        border: 1px solid white;
+        border-radius: 50%;
+        padding: 0.3rem;
+
+        &:hover {
+          transform: scale(1.2);
+          color: #337ab7;
+        }
+      }
+    }
+  }
+}

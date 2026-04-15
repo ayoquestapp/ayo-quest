@@ -1,0 +1,142 @@
+.container {
+    display: flex;
+    align-items: stretch;
+    height: calc(100vh - 80px);
+    overflow-x: hidden;
+    font-family: 'Saira', sans-serif;
+
+
+    .side-bar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 20%;
+        background-image: url("../../../assets/bg-login.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        font-family: 'Saira', sans-serif;
+        overflow: hidden;
+        
+
+
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: left;
+            gap: 1.8em;
+            font-family: 'Saira', sans-serif;
+
+            .p-float-label {
+                position: relative;
+                width: 100%;
+                background: linear-gradient(135deg, #337ab7, #5fa8e0);
+                margin-top: 0.5em;
+                border-radius: 8px;
+                
+
+                input {
+                    width: 100%;
+                    height: 32px;
+                    padding: 12px;
+                    font-size: 16px;
+                    border-radius: 8px;
+
+                    /* truque do gradiente */
+                    border: 2px solid transparent;
+                    background:
+                        linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, #337ab7, #5fa8e0) border-box;
+
+                    outline: none;
+                    box-shadow: none;
+                }
+
+                label {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    pointer-events: none;
+
+                    font-family: 'Saira', sans-serif;
+                    font-weight: 700;
+                    font-size: 16px;
+                    color: black;
+
+                    transition:
+                        top 0.2s ease,
+                        left 0.2s ease,
+                        font-size 0.2s ease,
+                        color 0.2s ease;
+                }
+
+                /* Quando foca ou tem valor */
+                input:focus+label,
+                input:not(:placeholder-shown)+label {
+                    top: -12px;
+                    font-size: 16px;
+                    color: rgb(255, 255, 255);
+
+                    background: none;
+                    padding: 0 4px;
+                    outline: none;
+                    box-shadow: none !important;
+                }
+
+                /* Corrige autofill */
+                input:-webkit-autofill+label {
+                    top: -12px;
+                    font-size: 16px;
+                }
+            }
+
+            ::ng-deep .p-button {
+                background: linear-gradient(135deg, #337ab7, #5fa8e0);
+                font-weight: 400;
+                border-radius: 8px;
+                height: 44px;
+                padding: 0.5rem 0.8rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                border: none;
+                box-shadow: 0 4px 3px rgba(0, 0, 0, 0.3);
+                color: white;
+
+                // Prepara o botão para a animação
+                background-size: 100% auto;
+                transition: transform 0.2s ease-out, background-position 0.5s ease-in-out;
+
+                i {
+                    font-size: 1.2rem;
+                }
+
+                // &:hover {
+                //   // Aciona a animação e o efeito de crescimento
+                //   animation: pulse 0.8s ease-in-out;
+                //   transform: scale(1.05);
+                // }
+            }
+
+            p {
+                text-align: center;
+                cursor: pointer;
+                color: white;
+            }
+        }
+    }
+
+    img {
+        width: 80%;
+        height: 100%;
+        object-fit: cover;
+
+    }
+
+
+}

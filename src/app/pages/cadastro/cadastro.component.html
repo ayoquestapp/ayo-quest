@@ -1,0 +1,11 @@
+<section>
+    <div class="container">
+        <!-- <aside class="side-bar"></aside> -->
+        <div class="content">
+            <!-- <img src="../../../assets/img-cadastro.png" alt="Logo Alkimia"> -->
+            <app-cadastro-form *ngIf="!templateVerificarEmail" (cadastroSucesso)="templateVerificarEmail=true"></app-cadastro-form>
+            <app-verificar-email-template *ngIf="templateVerificarEmail"></app-verificar-email-template>
+        </div>
+        <!-- <div class="right-bar"></div> -->
+    </div>
+</section>

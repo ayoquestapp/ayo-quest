@@ -1,0 +1,91 @@
+.atuacao {
+  padding: 5rem 2rem;
+  background: linear-gradient(180deg, #f7fbff 0%, #eef6ff 100%);
+  font-family: 'Saira', sans-serif;
+
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    h2 {
+      font-size: 2.4rem;
+      color: #0a0f28;
+      margin-bottom: 1rem;
+      
+    }
+
+    p {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #4b5b76;
+    }
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 6px 15px rgba(17, 38, 146, 0.02);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    text-align: left;
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 38px rgba(17, 38, 146, 0.14);
+    }
+
+    .icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      color: #1f4e79;
+      margin-bottom: 0.8rem;
+      
+    }
+
+    p {
+      color: #5f6f89;
+      line-height: 1.6;
+      font-size: 0.98rem;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .atuacao {
+    .cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .atuacao {
+    padding: 4rem 1rem;
+
+    .section-header h2 {
+      font-size: 2rem;
+    }
+
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+}

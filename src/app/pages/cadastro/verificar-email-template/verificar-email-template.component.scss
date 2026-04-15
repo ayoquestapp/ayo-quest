@@ -1,0 +1,54 @@
+section {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Quicksand', sans-serif;
+    align-items: center;
+    /* Centraliza todos os elementos filhos */
+    gap: 2.5rem;
+
+    img {
+        align-self: center;
+        width: 18%;
+        height: auto;
+    }
+
+    p {
+        color: #5E49E2;
+        font-size: 24px;
+        font-weight: 500;
+        text-align: center;
+
+    }
+
+
+    p-button {
+        display: block;
+        /* Força o p-button a se comportar como bloco */
+        width: 100%;
+        /* Permite que ele cresça */
+        max-width: 100px;
+        /* Define a largura máxima que você deseja */
+        margin-left: 0;
+        /* Centraliza o p-button na section */
+    }
+
+    /* 2. Ajuste do BOTÃO INTERNO */
+    ::ng-deep .p-button {
+        background: linear-gradient(to right, #f72586, #fec045);
+        font-weight: 300;
+        font-family: 'Quicksand', sans-serif;
+        border-radius: 8px;
+        height: 44px;
+        padding: 0.5rem 0.8rem;
+        border: none;
+        box-shadow: 0 4px 3px rgba(0, 0, 0, 0.3);
+        background-size: 100% auto;
+        transition: transform 0.2s ease-out, background-position 0.5s ease-in-out;
+        gap: 0.5rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        /* Faz o botão interno preencher o p-button pai */
+    }
+}
