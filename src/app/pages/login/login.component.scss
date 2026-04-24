@@ -7,19 +7,30 @@
 
 
     .side-bar {
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         height: 100%;
         width: 20%;
+
         background-image: url("../../../assets/bg-login.png");
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
         font-family: 'Saira', sans-serif;
         overflow: hidden;
-        
+
+
+
+        h2 {
+            position: absolute;
+            top: 1em;
+            color: white;
+            font-size: 40px;
+        }
+
 
 
 
@@ -37,7 +48,7 @@
                 background: linear-gradient(135deg, #337ab7, #5fa8e0);
                 margin-top: 0.5em;
                 border-radius: 8px;
-                
+
 
                 input {
                     width: 100%;
@@ -135,7 +146,7 @@
         width: 80%;
         height: 100%;
         object-fit: cover;
-
+        display: block;
     }
 
 

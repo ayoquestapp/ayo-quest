@@ -1,0 +1,13 @@
+<section class="courses-page">
+    <app-bem-vindo></app-bem-vindo>
+    <div class="section-header">
+        <h2>Trilhas disponíveis</h2>
+        <p>Escolha por onde quer começar — todas as trilhas estão liberadas.</p>
+    </div>
+
+    <div class="tracks-grid">
+        <app-trilhas *ngFor="let track of tracks" [titulo]="track.title" [descricao]="track.description"
+            [tag]="track.tag" [imagem]="track.image" [value]="track.progress" [hover]="true" [bloqueado]="false" [routerLink]="track.router">
+        </app-trilhas>
+    </div>
+</section>

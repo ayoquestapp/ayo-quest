@@ -23,6 +23,7 @@ import { fadeInUp, invalidFlash } from '../../../core/animations';
   styleUrl: './cadastro-form.component.scss'
 })
 export class CadastroFormComponent implements OnInit {
+  isLoading = false;
   cadastroForm: FormGroup;
   usuarios!: any[];
   flashState: { [key: string]: string } = {};
@@ -108,6 +109,8 @@ export class CadastroFormComponent implements OnInit {
   }
 
   async onSubmit(): Promise<void> {
+    if (this.isLoading) return; 
+
     if (this.cadastroForm.invalid) {
       Object.keys(this.cadastroForm.controls).forEach(field => {
         const control = this.cadastroForm.get(field);
@@ -127,25 +130,35 @@ export class CadastroFormComponent implements OnInit {
       return;
     }
 
-    const { email, senha, nome } = this.cadastroForm.value;
+    this.isLoading = true;
 
-    const { error } = await this.supabaseService.register(
-      email,
-      senha,
-      nome
-    );
+    try {
+      const { email, senha, nome } = this.cadastroForm.value;
 
-    if (error) {
-      console.error('Erro ao cadastrar:', error.message);
-      this.notificationService.error('Erro ao cadastrar', error.message);
-      return;
+      const { error } = await this.supabaseService.register(
+        email,
+        senha,
+        nome
+      );
+
+      if (error) {
+        this.notificationService.error('Erro ao cadastrar', error.message);
+        return;
+      }
+
+      this.notificationService.success(
+        'Cadastro realizado com sucesso!',
+        'Verifique seu email.'
+      );
+
+      this.cadastroSucesso.emit();
+
+    } catch (err) {
+      console.error(err);
+      this.notificationService.error('Erro inesperado', 'Tente novamente');
+
+    } finally {
+      this.isLoading = false; 
     }
-
-    this.notificationService.success(
-      'Cadastro realizado com sucesso!',
-      'Verifique seu email.'
-    );
-
-    this.cadastroSucesso.emit();
   }
 }

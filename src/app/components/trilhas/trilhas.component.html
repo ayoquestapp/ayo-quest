@@ -1,0 +1,38 @@
+<div class="card" [ngClass]="{ hover: hover, bloqueado: bloqueado }">
+  <div *ngIf="bloqueado" class="container-bloqueado-status">
+    <i class="pi pi-lock"></i>
+    <h4>Bloqueado</h4>
+  </div>
+
+  <div class="image-wrapper">
+    <img class="img-card" [src]="imagem" [alt]="titulo" />
+    <span class="tag">{{ tag }}</span>
+  </div>
+
+  <div class="card-content">
+    <div class="progress-header">
+      <span class="progress-value">{{ value }}%</span>
+    </div>
+
+    <div class="progress-wrapper">
+      <p-progressBar [value]="value" [showValue]="false"></p-progressBar>
+    </div>
+
+    <div class="container-card">
+      <div class="text">
+        <span class="subtitle">
+          <i class="pi pi-sparkles"></i>
+          TRILHA
+        </span>
+
+        <h4>{{ titulo }}</h4>
+        <p>{{ descricao }}</p>
+      </div>
+
+      <button class="action-btn" type="button">
+        <span>Acessar trilha</span>
+        <i class="pi pi-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</div>

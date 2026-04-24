@@ -1,6 +1,41 @@
-<section>
-    <img src="../../../../assets/verificar-email.png" alt="">
-    <p>Nossos mestres alquimistas estão preparando sua poção de admissão.</p>
-    <p>Aguarde o token de confirmação no seu e-mail para completar sua inscrição!</p>
-    <p-button icon="pi pi-arrow-circle-left" label="Voltar"></p-button>
+<section class="verify-email-card" [@cardEnter]>
+    <div class="illustration-wrapper">
+        <img
+            src="../../../../assets/ayo.png"
+            alt="Logo AYO Quest"
+            class="ayo-logo"
+            [@logoIntro]
+        />
+
+        <ng-lottie
+            class="verify-email-lottie"
+            [options]="lottieOptions"
+            [@lottieIntro]>
+        </ng-lottie>
+    </div>
+
+    <div class="text-content" [@staggerContent]>
+        <h2>Confirme seu e-mail para começar sua jornada no AYO Quest</h2>
+
+        <p class="highlight">
+            Seu cadastro foi quase concluído!
+        </p>
+
+        <p>
+            Enviamos um <strong>E-mail de confirmação</strong> para o seu e-mail.
+            Verifique sua caixa de entrada e siga as instruções para ativar sua conta.
+        </p>
+
+        <p class="tip">
+            Não encontrou o e-mail? Confira também a pasta de spam ou lixo eletrônico.
+        </p>
+    </div>
+
+    <div class="actions" [@buttonIntro]>
+        <p-button
+            icon="pi pi-arrow-left"
+            label="Voltar"
+            [routerLink]="['/login']">
+        </p-button>
+    </div>
 </section>

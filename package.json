@@ -20,6 +20,8 @@
     "@angular/router": "^17.3.0",
     "@fortawesome/fontawesome-free": "^7.2.0",
     "@supabase/supabase-js": "^2.103.0",
+    "lottie-web": "^5.13.0",
+    "ngx-lottie": "^11.0.2",
     "ngx-toastr": "^17.0.2",
     "primeicons": "^7.0.0",
     "primeng": "^17.18.15",

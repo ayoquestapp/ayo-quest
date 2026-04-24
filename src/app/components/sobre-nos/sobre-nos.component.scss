@@ -1,8 +1,12 @@
 .about {
+    min-height: calc(100vh - 80px);
     padding: 80px 20px;
+    box-sizing: border-box;
     background: #0a0f28;
     color: white;
     font-family: 'Saira', sans-serif;
+    display: flex;
+    align-items: center;
 
     .container {
         max-width: 1200px;

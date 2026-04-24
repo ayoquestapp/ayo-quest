@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header *ngIf="!isLogged"></app-header>
 <main 
   class="page-content" 
   [class.no-header]="isLogged">

@@ -1,0 +1,52 @@
+<aside>
+    <section class="sidebar">
+        <div class="header">
+            <img src="../../../assets/ayo.png" alt="">
+            <p-divider layout="vertical"></p-divider>
+        </div>
+        <ul>
+            <li  routerLinkActive="active" routerLinkActive="active" [routerLink]="['cursos']">
+                <a pRipple
+                    class="item-sidabar" >
+                    <i class="pi pi-book mr-2"></i>
+                    <span class="font-medium">Cursos</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['favoritos']"> 
+                <a pRipple
+                    class="item-sidabar">
+                    <i class="pi pi-bookmark mr-2"></i>
+                    <span class="font-medium">Favoritos</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['avisos']">
+                <a pRipple
+                    class="item-sidabar">
+                    <i class="pi pi-bell mr-2"></i>
+                    <span class="font-medium">Avisos</span>
+                </a>
+            </li>
+            <li>
+                <a pRipple
+                    class="item-sidabar">
+                    <i class="pi pi-comments mr-2"></i>
+                    <span class="font-medium">Serviço de atenção</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['conta']">
+                <a pRipple
+                    class="item-sidabar">
+                    <i class="pi pi-user mr-2"></i>
+                    <span class="font-medium">Minha conta</span>
+                </a>
+            </li>
+            <li class="logout" (click)="logout()">
+                <a pRipple
+                    class="item-sidabar">
+                    <i class="pi pi-sign-out mr-2"></i>
+                    <span class="font-medium">Sair</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+</aside>

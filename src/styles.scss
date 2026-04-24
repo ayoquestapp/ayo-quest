@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import 'ngx-toastr/toastr';
+@import 'primeicons/primeicons.css';
 
 * {
   padding: 0;
@@ -20,9 +21,13 @@ body {
 }
 
 
-
 app-root {
-  display: block; // Essencial para que aceite largura e altura
+  display: block; 
   width: 100%;
   min-height: 100vh;
+}
+
+.toast-container,
+.ngx-toastr {
+    font-family: 'Saira', sans-serif !important;
 }

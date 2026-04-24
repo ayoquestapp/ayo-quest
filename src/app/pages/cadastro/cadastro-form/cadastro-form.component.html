@@ -1,59 +1,37 @@
 <form [formGroup]="cadastroForm" autocomplete="off">
     <div class="title">
         <p><strong>É hora de iniciar sua jornada AYO Quest!</strong></p>
-        <img
-            src="../../../../assets/logo_transparent-removebg-preview.png"
-            alt="Logo AYO"
-            class="logo-ayo-individual"
-        />
+        <img src="../../../../assets/logo_transparent-removebg-preview.png" alt="Logo AYO"
+            class="logo-ayo-individual" />
     </div>
 
     <div class="form-field-container">
         <div class="field-wrapper">
             <p-floatLabel>
-                <input
-                    id="nome"
-                    type="text"
-                    pInputText
-                    formControlName="nome"
-                    autocomplete="new-name"
-                    placeholder=" "
-                    [@invalidFlash]="flashState['nome']"
-                    [ngClass]="{
+                <input id="nome" type="text" pInputText formControlName="nome" autocomplete="new-name" placeholder=" "
+                    [@invalidFlash]="flashState['nome']" [ngClass]="{
                         'ng-invalid ng-dirty': isInvalidField('nome'),
                         'field-invalid': isInvalidField('nome')
-                    }"
-                />
+                    }" />
                 <label for="nome">Nome</label>
             </p-floatLabel>
 
-            <small
-                class="p-error error-message"
-                [@fadeInUp]="isInvalidField('nome') ? 'visible' : 'hidden'">
+            <small class="p-error error-message" [@fadeInUp]="isInvalidField('nome') ? 'visible' : 'hidden'">
                 <span *ngIf="isInvalidField('nome')">Nome é obrigatório*</span>
             </small>
         </div>
 
         <div class="field-wrapper">
             <p-floatLabel>
-                <input
-                    id="senha"
-                    type="password"
-                    pInputText
-                    formControlName="senha"
-                    placeholder=" "
-                    [@invalidFlash]="flashState['senha']"
-                    [ngClass]="{
+                <input id="senha" type="password" pInputText formControlName="senha" placeholder=" "
+                    [@invalidFlash]="flashState['senha']" [ngClass]="{
                         'ng-invalid ng-dirty': isInvalidField('senha'),
                         'field-invalid': isInvalidField('senha')
-                    }"
-                />
+                    }" />
                 <label for="senha">Senha</label>
             </p-floatLabel>
 
-            <small
-                class="p-error error-message"
-                [@fadeInUp]="isInvalidField('senha') ? 'visible' : 'hidden'">
+            <small class="p-error error-message" [@fadeInUp]="isInvalidField('senha') ? 'visible' : 'hidden'">
                 <span *ngIf="isInvalidField('senha')">
                     Senha deve ter no mínimo 6 caracteres*
                 </span>
@@ -62,25 +40,15 @@
 
         <div class="field-wrapper">
             <p-floatLabel>
-                <input
-                    id="email"
-                    type="email"
-                    pInputText
-                    formControlName="email"
-                    autocomplete="new-email"
-                    placeholder=" "
-                    [@invalidFlash]="flashState['email']"
-                    [ngClass]="{
+                <input id="email" type="email" pInputText formControlName="email" autocomplete="new-email"
+                    placeholder=" " [@invalidFlash]="flashState['email']" [ngClass]="{
                         'ng-invalid ng-dirty': isInvalidField('email'),
                         'field-invalid': isInvalidField('email')
-                    }"
-                />
+                    }" />
                 <label for="email">Email</label>
             </p-floatLabel>
 
-            <small
-                class="p-error error-message"
-                [@fadeInUp]="isInvalidField('email') ? 'visible' : 'hidden'">
+            <small class="p-error error-message" [@fadeInUp]="isInvalidField('email') ? 'visible' : 'hidden'">
 
                 <ng-container *ngIf="isInvalidField('email')">
                     <ng-container *ngIf="cadastroForm.get('email')?.hasError('required')">
@@ -97,25 +65,16 @@
 
         <div class="field-wrapper">
             <p-floatLabel>
-                <input
-                    id="confirmarSenha"
-                    type="password"
-                    pInputText
-                    formControlName="confirmarSenha"
-                    autocomplete="new-password"
-                    placeholder=" "
-                    [@invalidFlash]="flashState['confirmarSenha']"
+                <input id="confirmarSenha" type="password" pInputText formControlName="confirmarSenha"
+                    autocomplete="new-password" placeholder=" " [@invalidFlash]="flashState['confirmarSenha']"
                     [ngClass]="{
                         'ng-invalid ng-dirty': isInvalidField('confirmarSenha'),
                         'field-invalid': isInvalidField('confirmarSenha')
-                    }"
-                />
+                    }" />
                 <label for="confirmarSenha">Confirmar Senha</label>
             </p-floatLabel>
 
-            <small
-                class="p-error error-message"
-                [@fadeInUp]="isInvalidField('confirmarSenha') ? 'visible' : 'hidden'">
+            <small class="p-error error-message" [@fadeInUp]="isInvalidField('confirmarSenha') ? 'visible' : 'hidden'">
 
                 <ng-container *ngIf="isInvalidField('confirmarSenha')">
                     <ng-container *ngIf="cadastroForm.get('confirmarSenha')?.hasError('required')">
@@ -126,7 +85,8 @@
                         Confirmação deve ter no mínimo 6 caracteres*
                     </ng-container>
 
-                    <ng-container *ngIf="cadastroForm.hasError('senhasDiferentes') && cadastroForm.get('confirmarSenha')?.touched">
+                    <ng-container
+                        *ngIf="cadastroForm.hasError('senhasDiferentes') && cadastroForm.get('confirmarSenha')?.touched">
                         As senhas não conferem*
                     </ng-container>
                 </ng-container>
@@ -156,9 +116,8 @@
         -->
 
         <div class="bt-container">
-            <p-button (onClick)="onSubmit()">
-                <i class="fa-solid fa-circle-user"></i>
-                Cadastrar
+            <p-button (onClick)="onSubmit()" [loading]="isLoading" [disabled]="isLoading" label="Cadastrar"
+                icon="fa-solid fa-circle-user" iconPos="left">
             </p-button>
 
             <p-button [routerLink]="['/login']">
