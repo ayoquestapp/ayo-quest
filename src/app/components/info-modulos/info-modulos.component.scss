@@ -1,0 +1,39 @@
+.info-modulos{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+    .text-container{
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+
+        h3{
+            font-size: 28px;
+        }
+        p{
+            font-size: 18px;
+        }
+    }
+
+    .info-chips {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.55rem 1rem;
+        border-radius: 999px;
+        background: rgba(51, 122, 183, 0.14);
+        border: 1px solid rgba(95, 168, 224, 0.22);
+        color: white;
+        font-size: 0.75rem;
+        font-weight: 700;
+        box-shadow: 0 8px 18px rgba(10, 30, 45, 0.16);
+        position: relative;
+        z-index: 2;
+    
+        i {
+            font-size: 0.9rem;
+        }
+    }
+}

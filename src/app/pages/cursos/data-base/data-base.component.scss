@@ -7,4 +7,111 @@
     background-position: center;
     color: #f5f7fb;
     font-family: 'Saira', sans-serif;
+
+    .nav {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        transition: 300ms ease-in-out;
+        cursor: pointer;
+        width: 165px;
+        margin-bottom: 1rem;
+
+        i {
+            font-size: 14px;
+        }
+
+        &:hover {
+            color: #337ab7;
+        }
+    }
+
+
+
+    .status-cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.2rem;
+        margin: 1.5rem 0;
+
+    }
+
+    .status-card {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        padding: 1rem 1.4rem;
+        border-radius: 16px;
+
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(95, 168, 224, 0.18);
+
+        backdrop-filter: blur(6px);
+        transition: all 0.25s ease;
+
+        &:hover {
+            transform: translateY(-4px);
+            border-color: rgba(95, 168, 224, 0.35);
+            background: rgba(95, 168, 224, 0.08);
+        }
+
+        .icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 1.2rem;
+            color: white;
+
+            &.success {
+                background: linear-gradient(135deg, #19d4c4, #5fa8e0);
+            }
+
+            &.energy {
+                background: linear-gradient(135deg, #00ffa3, #00c6ff);
+            }
+
+            &.level {
+                background: linear-gradient(135deg, #7b61ff, #5fa8e0);
+            }
+
+            &.streak {
+                background: linear-gradient(135deg, #ff7a18, #ffb347);
+            }
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+
+            .value {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: white;
+            }
+
+            small {
+                font-size: 0.7rem;
+                color: #9fb7cc;
+                letter-spacing: 0.05em;
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .status-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .status-cards {
+        grid-template-columns: 1fr;
+    }
 }

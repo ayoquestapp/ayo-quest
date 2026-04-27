@@ -29,6 +29,9 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { SidebarModule } from 'primeng/sidebar';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { FileUploadModule } from 'primeng/fileupload';
+import { ChipModule } from 'primeng/chip';
+import { StepperModule } from 'primeng/stepper';
+
 
 @NgModule({
   imports: [
@@ -58,7 +61,9 @@ import { FileUploadModule } from 'primeng/fileupload';
     MultiSelectModule,
     SidebarModule,
     ProgressBarModule,
-    FileUploadModule
+    FileUploadModule,
+    ChipModule,
+    StepperModule
   ],
   exports: [
     ButtonModule,
@@ -87,7 +92,8 @@ import { FileUploadModule } from 'primeng/fileupload';
     MultiSelectModule,
     SidebarModule,
     ProgressBarModule,
-    FileUploadModule
+    FileUploadModule,
+    ChipModule
   ]
 })
 export class PrimeNgModule {}

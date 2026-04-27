@@ -1,3 +1,13 @@
 <section class="front-end-courses">
- <P>TESTE</P>
+    <div class="nav" [routerLink]="['/app/cursos']">
+        <i class="pi pi-arrow-left"></i>
+        <span>Voltar para trilhas</span>
+    </div>
+    <app-card-cursos [info]="info"></app-card-cursos>
+    <div class="status-cards">
+        <app-card-status *ngFor="let card of statusCards" [data]="card">
+        </app-card-status>
+    </div>
+    <app-info-modulos></app-info-modulos>
+    <app-modulos-stepper [modulos]="modules"></app-modulos-stepper>
 </section>

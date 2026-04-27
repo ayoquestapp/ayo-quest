@@ -1,0 +1,14 @@
+<div class="stepper-container">
+    <div class="line"></div>
+
+    <div 
+        class="step-item"
+        *ngFor="let module of modulos; let i = index"
+    >
+        <app-modulos
+            [module]="module"
+            [index]="i"
+        />
+    </div>
+
+</div>

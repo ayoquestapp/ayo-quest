@@ -1,0 +1,78 @@
+<div class="card" [class.in-progress]="module.status === 'in-progress'">
+    <div class="card-header-container">
+        <div class="step-icon" [ngClass]="module.status">
+            <ng-container *ngIf="module.status === 'completed'; else number">
+                <i class="pi pi-check"></i>
+            </ng-container>
+
+            <ng-template #number>
+                {{ index + 1 }}
+            </ng-template>
+        </div>
+
+        <div class="card-header">
+            <div class="card-badge">
+                <i class="bi bi-sparkles"></i>
+                MÓDULO {{ index + 1 }}
+            </div>
+
+            <div class="status-tag">
+                <ng-container [ngSwitch]="module.status">
+                    <span *ngSwitchCase="'completed'">Concluído</span>
+                    <span *ngSwitchCase="'in-progress'">Em andamento</span>
+                    <span *ngSwitchDefault>Bloqueado</span>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="content-left">
+            <h1>{{ module.title }}</h1>
+            <p>{{ module.description }}</p>
+
+            <div class="tags">
+                <span class="tag" *ngFor="let tag of module.tags">
+                    {{ tag }}
+                </span>
+            </div>
+
+            <div class="card-footer-stats">
+                <div class="stat-item">
+                    <i class="bi bi-clock"></i>
+                    <span>{{ module.duration }}</span>
+                </div>
+
+                <div class="stat-item">
+                    <i class="bi bi-code-slash"></i>
+                    <span>{{ module.lessons }} aulas</span>
+                </div>
+
+                <div class="stat-item highlight">
+                    <i class="bi bi-lightning-fill"></i>
+                    <span>+{{ module.xp }} XP</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-right">
+            <button 
+                class="btn-action"
+                [disabled]="module.status === 'pending'"
+            >
+                <ng-container *ngIf="module.status === 'completed'">
+                    Revisar
+                </ng-container>
+
+                <ng-container *ngIf="module.status === 'in-progress'">
+                    Continuar
+                </ng-container>
+
+                <ng-container *ngIf="module.status === 'pending'">
+                    Bloqueado
+                </ng-container>
+            </button>
+        </div>
+    </div>
+
+</div>

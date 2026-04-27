@@ -1,0 +1,45 @@
+.stepper-container {
+    position: relative;
+    padding-left: 90px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.line {
+    position: absolute;
+    left: 145px;
+    top: 10px;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom,
+            #6ed0ff,
+            rgba(110, 208, 255, 0.1));
+    z-index: 1;
+    height: 95%;
+}
+
+.step-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    z-index: 2;
+
+    .icon-container {
+        position: absolute;
+        left: -65px;
+        /* Ajuste para centralizar exatamente na linha */
+        top: 20px;
+        /* Alinha com o topo do card */
+        z-index: 3;
+        background-color: #0b1426;
+        /* Mesma cor do fundo para "cortar" a linha */
+        border-radius: 50%;
+    }
+}
+
+
+.card-content {
+    background-color: #0b1426;
+    position: relative;
+    z-index: 2;
+}

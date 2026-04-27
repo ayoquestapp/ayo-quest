@@ -1,0 +1,183 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 2.2rem;
+    border-radius: 28px;
+    position: relative;
+    background: linear-gradient(180deg, #071f35 0%, #0b2142 100%);
+    border: 1px solid rgba(95, 168, 224, 0.12);
+}
+
+.card-header-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+
+.step-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    z-index: 3;
+}
+
+.step-icon.completed {
+    background: #6ed0ff;
+    color: #05111a;
+}
+
+.step-icon.in-progress {
+    border-color: #6ed0ff;
+}
+
+.step-icon.pending {
+    opacity: 0.3;
+}
+
+.card-header {
+    display: flex;
+    gap: 1rem;
+}
+
+.card-badge {
+    background: rgba(51, 122, 183, 0.25);
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    color: white;
+    font-weight: 700;
+}
+
+.status-tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #6ed0ff;
+    color: black;
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 800;
+
+
+}
+
+.card-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tags {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.tag {
+    background: rgba(4, 22, 33, 0.58);
+    padding: 0.3rem 1rem;
+    border-radius: 999px;
+}
+
+.btn-action {
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background: #51B1DA;
+    color: white;
+    font-family: 'Saira', sans-serif;
+    vertical-align: middle;
+}
+
+button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.card-footer-stats {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #a0aec0;
+    font-size: 0.9rem;
+}
+
+
+.stat-item.highlight {
+    color: #00ffcc;
+    font-weight: 600;
+}
+
+.stat-item i {
+    font-size: 1.1rem;
+}
+
+
+@keyframes cardGlowLoop {
+
+    0%,
+    100% {
+        border-color: rgba(110, 208, 255, 0.12);
+        box-shadow: 0 0 5px rgba(110, 208, 255, 0.05);
+    }
+
+    50% {
+        border-color: rgba(110, 208, 255, 0.6);
+    
+        box-shadow: 0 0 30px rgba(110, 208, 255, 0.25);
+    }
+}
+
+@keyframes iconFlash {
+
+    0%,
+    100% {
+        opacity: 1;
+        filter: brightness(1);
+        box-shadow: 0 0 0px rgba(110, 208, 255, 0);
+    }
+
+    50% {
+        filter: brightness(1.2) drop-shadow(0 0 8px rgba(110, 208, 255, 0.8));
+        box-shadow: 0 0 15px rgba(110, 208, 255, 0.4);
+    }
+}
+
+.card.in-progress {
+    animation: cardGlowLoop 2.8s ease-in-out infinite;
+    border: 1px solid rgba(110, 208, 255, 0.3); 
+
+    .step-icon.in-progress {
+        animation: iconFlash 2.8s ease-in-out infinite; 
+        background: rgba(110, 208, 255, 0.1);
+        color: #6ed0ff;
+    }
+
+    .stat-item.highlight i {
+        animation: iconFlash 2.8s ease-in-out infinite;
+    }
+}
+
+.card,
+.step-icon {
+    transition: all 0.5s ease;
+}

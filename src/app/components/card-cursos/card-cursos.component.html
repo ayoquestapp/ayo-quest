@@ -1,1 +1,53 @@
-<p>card-cursos works!</p>
+<section class="card-cursos-container">
+    <div class="card">
+        <div class="content-card">
+            <span class="hero-badge">
+                <i class="pi pi-sparkles"></i>
+                Trilha em andamento
+            </span>
+            <div class="text-container">
+                <h2>{{info.title}}</h2>
+                <p>{{info.description}}</p>
+            </div>
+            <div class="chips-container">
+                <div class="chip">
+                    <div class="title-chip">
+                        <i class="pi pi-trophy"></i>
+                        <small>Módulos</small>
+                    </div>
+                    <span>{{ info.modules }}</span>
+                </div>
+
+                <div class="chip">
+                    <div class="title-chip">
+                        <i class="pi pi-clock"></i>
+                        <small>Tempo estimado</small>
+                    </div>
+                    <span>{{ info.tempoEstimado }}</span>
+                </div>
+
+                <div class="chip">
+                    <div class="title-chip">
+                        <i class="pi pi-bolt"></i>
+                        <small>XP</small>
+                    </div>
+                    <span>{{ info.xp }}</span>
+                </div>
+
+                <div class="chip">
+                    <div class="title-chip">
+                        <i class="pi pi-angle-double-up"></i>
+                        <small>Sequência</small>
+                    </div>
+                    <span>{{ info.streak }}</span>
+                </div>
+            </div>
+            <div class="progress-wrapper">
+                <p-progressBar [value]="info.progresso" [showValue]="false"></p-progressBar>
+            </div>
+        </div>
+        <div class="image-container" [ngStyle]="{
+    'background-image': 'url(' + info.image + ')'
+  }"></div>
+    </div>
+</section>
