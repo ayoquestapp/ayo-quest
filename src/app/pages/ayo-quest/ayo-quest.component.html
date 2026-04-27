@@ -3,7 +3,7 @@
 
   <section class="content">
     <div class="app-header">
-      <div class="header-left"> 
+      <div class="header-left">
         <p-divider layout="vertical"></p-divider>
         <div class="text-container">
           <p>Sua jornada</p>
@@ -22,10 +22,15 @@
         <button class="icon-btn">
           <i class="pi pi-bell"></i>
         </button>
+        <div class="account-wrapper" (click)="toggleMenu($event)">
+          <button class="icon-btn">
+            <i class="pi pi-user"></i>
+          </button>
 
-        <button class="icon-btn">
-          <i class="pi pi-user"></i>
-        </button>
+          <p-overlayPanel #op appendTo="body">
+            <app-card-minha-conta [data]="accountData"></app-card-minha-conta>
+          </p-overlayPanel>
+        </div>
       </div>
 
     </div>

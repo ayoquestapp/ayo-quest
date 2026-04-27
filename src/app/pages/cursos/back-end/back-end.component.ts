@@ -65,7 +65,7 @@ export class BackEndComponent {
     description:
       'Domine Spring Boot, Java ,autenticação, APIs REST e arquitetura de servidores escaláveis.',
     image: 'assets/course-backend.jpg',
-    progresso: 10,
+    progresso: 50,
   }
 
   backendModules: Module[] = [

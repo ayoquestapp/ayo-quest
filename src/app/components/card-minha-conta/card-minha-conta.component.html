@@ -1,0 +1,25 @@
+<div class="account-card">
+  <div class="header">
+    <div class="avatar">{{ data.userName[0] }}</div>
+
+    <div class="info">
+      <strong>{{ data.userName }}</strong>
+      <span>{{ data.email }}</span>
+      <span class="level">LV {{ data.level }}</span>
+    </div>
+  </div>
+
+  <div class="xp-bar">
+    <div class="progress" [style.width.%]="(data.xp / data.maxXp) * 100"></div>
+  </div>
+
+  <div class="menu">
+    <div [routerLink]="['/app/minha-conta']"><i class="pi pi-user"></i>Minha conta</div>
+    <div [routerLink]="['/app/conquistas']"><i class="pi pi-trophy"></i>Conquistas</div>
+    <div [routerLink]="['/app/favoritos']"><i class="pi pi-heart"></i>Favoritos</div>
+    <div [routerLink]="['/app/notificacoes']"><i class="pi pi-bell"></i>Notificações</div>
+    <div [routerLink]="['/app/preferencias']"><i class="pi pi-cog"></i>Preferências</div>
+  </div>
+
+  <div class="logout">Sair da conta</div>
+</div>

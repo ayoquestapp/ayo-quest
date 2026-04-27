@@ -31,7 +31,7 @@ export class DataBaseComponent {
     description:
       'Modelagem, SQL, PostgreSQL, índices e otimização para guardar o conhecimento do reino.',
     image: 'assets/course-database.jpg',
-    progresso: 10,
+    progresso: 85,
   }
 
   databaseModules: Module[] = [

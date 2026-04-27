@@ -11,7 +11,7 @@ import { ModulosStepperComponent } from "../../../components/modulos-stepper/mod
 @Component({
   selector: 'app-front-end',
   standalone: true,
-  imports: [CommonModule, RouterLink, CardCursosComponent, CardStatusComponent, InfoModulosComponent, ModulosComponent, ModulosStepperComponent],
+  imports: [CommonModule, RouterLink, CardCursosComponent, CardStatusComponent, InfoModulosComponent, ModulosStepperComponent],
   templateUrl: './front-end.component.html',
   styleUrl: './front-end.component.scss'
 })
@@ -65,7 +65,7 @@ export class FrontEndComponent implements OnInit {
     title: 'Front-end: Construindo Interfaces Mágicas',
     description: 'Aprenda HTML, CSS, JavaScript e Angular para criar experiências visuais incríveis na web. Cada módulo libera novos poderes — siga o caminho até vencer o desafio!',
     image: '../../../assets/course-frontend.jpg',
-    progresso: 10,
+    progresso: 30,
   }
 
   modules: Module[] = [

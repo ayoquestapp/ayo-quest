@@ -1,0 +1,66 @@
+.account-card {
+  width: 280px;
+  background: #0f172a;
+  border-radius: 12px;
+  color: #fff;
+  overflow: hidden;
+  font-family: 'Saira' , sans-serif;
+  margin-top: 10px;
+}
+
+.header {
+  display: flex;
+  gap: 10px;
+  padding: 16px;
+  background: linear-gradient(180deg, #163370 0%, #0d102f 100%);
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.level {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.xp-bar {
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+}
+
+.progress {
+  height: 100%;
+  background: #22c55e;
+}
+
+.menu div {
+  padding: 10px 16px;
+  cursor: pointer;
+  i {
+    margin-right: 10px;
+  }
+}
+
+.menu div:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.logout {
+  padding: 12px 16px;
+  color: #ef4444;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+}

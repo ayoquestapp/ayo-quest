@@ -31,6 +31,9 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ChipModule } from 'primeng/chip';
 import { StepperModule } from 'primeng/stepper';
+import { MegaMenuModule } from 'primeng/megamenu';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+
 
 
 @NgModule({
@@ -63,7 +66,9 @@ import { StepperModule } from 'primeng/stepper';
     ProgressBarModule,
     FileUploadModule,
     ChipModule,
-    StepperModule
+    StepperModule,
+    MegaMenuModule,
+    OverlayPanelModule,
   ],
   exports: [
     ButtonModule,
@@ -93,7 +98,9 @@ import { StepperModule } from 'primeng/stepper';
     SidebarModule,
     ProgressBarModule,
     FileUploadModule,
-    ChipModule
+    ChipModule,
+    MegaMenuModule,
+    OverlayPanelModule,
   ]
 })
 export class PrimeNgModule {}

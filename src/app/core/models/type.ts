@@ -37,3 +37,11 @@ export interface Module {
   xp: number;
   status: 'completed' | 'in-progress' | 'pending';
 }
+
+export interface AccountMenu {
+  userName: string;
+  email: string;
+  level: number;
+  xp: number;
+  maxXp: number;
+}

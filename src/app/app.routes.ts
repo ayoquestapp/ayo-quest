@@ -13,6 +13,7 @@ import { AvisosComponent } from './pages/avisos/avisos.component';
 import { FrontEndComponent } from './pages/cursos/front-end/front-end.component';
 import { BackEndComponent } from './pages/cursos/back-end/back-end.component';
 import { DataBaseComponent } from './pages/cursos/data-base/data-base.component';
+import { MinhaContaComponent } from './pages/minha-conta/minha-conta.component';
 
 
 export const routes: Routes = [
@@ -85,8 +86,11 @@ export const routes: Routes = [
           label: 'Avisos',
         }
       },
-      //   { path: 'conta', component:  },
-
+      { path: 'minha-conta', component: MinhaContaComponent,
+        data: {
+          label: 'Minha Conta',
+        }
+      },
       { path: '', redirectTo: 'cursos', pathMatch: 'full' }
     ]
   }
