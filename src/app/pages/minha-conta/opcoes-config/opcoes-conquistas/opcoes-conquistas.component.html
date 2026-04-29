@@ -1,0 +1,23 @@
+<div class="conquistas-grid">
+  <div 
+    class="conquista-card"
+    *ngFor="let conquista of conquistas"
+    [ngClass]="{ 'locked': !conquista.desbloqueada }"
+  >
+    <div class="icon-container">
+      <i [class]="conquista.icone"></i>
+    </div>
+
+    <div class="conquista-info">
+      <h3>{{ conquista.titulo }}</h3>
+      <p>{{ conquista.descricao }}</p>
+
+      <span 
+        class="status-badge"
+        [ngClass]="{ 'unlocked': conquista.desbloqueada }"
+      >
+        {{ conquista.desbloqueada ? 'Desbloqueada' : 'Bloqueada' }}
+      </span>
+    </div>
+  </div>
+</div>

@@ -118,7 +118,8 @@
 .stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    gap: 6rem;
+    margin: 0 auto;
 }
 
 .stat {

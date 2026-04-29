@@ -51,25 +51,25 @@ export const routes: Routes = [
     canActivate: [isAuthenticated],
     children: [
       {
-        path: 'cursos', component: CursosComponent,
+        path: 'trilhas', component: CursosComponent,
         data: {
-          label: 'Cursos',
+          label: 'Trilhas',
         }
       },
       {
-        path: 'cursos/front-end', component: FrontEndComponent,
+        path: 'trilhas/front-end', component: FrontEndComponent,
         data: {
           label: 'Front-end',
         }
       },
       {
-        path: 'cursos/back-end', component: BackEndComponent,
+        path: 'trilhas/back-end', component: BackEndComponent,
         data: {
           label: 'Back-end',
         }
       },
       {
-        path: 'cursos/data-base', component: DataBaseComponent,
+        path: 'trilhas/data-base', component: DataBaseComponent,
         data: {
           label: 'Data-base',
         }

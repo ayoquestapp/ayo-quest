@@ -1,0 +1,80 @@
+<div class="content">
+    <div class="card" id="form-card">
+        <div class="card-header">
+            <h2>Sobre você</h2>
+            <p>Atualize suas informações pessoais e como você é exibido no AyoQuest.</p>
+        </div>
+        <div class="card-content">
+            <form [formGroup]="perfilForm" autocomplete="off">
+                <div class="grid">
+                    <div class="field">
+                        <label>Nome de exibição</label>
+                        <input type="text" pInputText formControlName="nomeExibicao" />
+                    </div>
+    
+                    <div class="field">
+                        <label>Nome de usuário</label>
+                        <input type="text" pInputText formControlName="nomeUsuario" />
+                    </div>
+    
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="email" pInputText formControlName="email" />
+                    </div>
+    
+                    <div class="field">
+                        <label>Localização</label>
+                        <input type="text" pInputText formControlName="localizacao" />
+                    </div>
+    
+                    <div class="field bio">
+                        <label>Bio</label>
+                        <textarea pInputTextarea formControlName="bio" rows="3" autoResize="true"></textarea>
+                    </div>
+                </div>
+                <div class="btn-container">
+                    <button pButton type="submit" label="Salvar alterações" class="p-button-primary"></button>
+                    <button pButton label="Cancelar" class="btn-cancelar" type="button">
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="configs-container">
+        <div class="card small">
+            <div class="card-header">
+                <h3>Status da conta</h3>
+                <p>Informações gerais sobre sua conta.</p>
+            </div>
+    
+            <div class="card-content status">
+                <div class="status-item">
+                    <span>Conta</span>
+                    <strong class="active">Ativa</strong>
+                </div>
+    
+                <div class="status-item">
+                    <span>Email verificado</span>
+                    <strong class="active">Sim</strong>
+                </div>
+                <div class="status-item">
+                    <span>Plano</span>
+                    <strong>Gratuito</strong>
+                </div>
+            </div>
+        </div>
+    
+        <div class="card small">
+            <div class="card-header">
+                <h3>Segurança</h3>
+                <p>Gerencie suas credenciais.</p>
+            </div>
+    
+            <div class="card-content security">
+                <button pButton label="Alterar senha" class="btn-security"></button>
+                <button pButton label="Alterar email" class="btn-security"></button>
+            </div>
+        </div>
+    </div>
+
+</div>

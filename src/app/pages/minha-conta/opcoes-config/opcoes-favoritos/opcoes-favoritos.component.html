@@ -1,0 +1,110 @@
+<div class="favorites-container" *ngIf="hasFavorites">
+  <div class="favorites-stats">
+    <div class="stat-card">
+      <i class="pi pi-heart stat-icon"></i>
+      <div class="stat-info">
+        <span class="value">{{ favoritos.length }}</span>
+        <span class="label">Favoritos</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <i class="pi pi-map stat-icon"></i>
+      <div class="stat-info">
+        <span class="value">{{ totalTrilhas }}</span>
+        <span class="label">Trilhas</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <i class="pi pi-bolt stat-icon"></i>
+      <div class="stat-info">
+        <span class="value">{{ totalXP }}</span>
+        <span class="label">XP Acumulado</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <i class="pi pi-clock stat-icon"></i>
+      <div class="stat-info">
+        <span class="value">{{ totalHoras }}h</span>
+        <span class="label">Horas Salvas</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="favorites-grid">
+    <div class="fav-card" *ngFor="let fav of favoritos">
+
+      <div 
+        class="card-banner"
+        [ngStyle]="{ background: fav.corBanner }"
+      >
+        <div class="banner-top">
+          <div class="card-icon-main">
+            <i [class]="fav.icone"></i>
+          </div>
+
+          <span class="type-badge">{{ fav.tipo }}</span>
+
+          <i 
+            class="pi pi-heart-fill fav-toggle"
+            (click)="toggleFavorito(fav.id)"
+          ></i>
+        </div>
+      </div>
+
+      <div class="card-body">
+
+        <div class="content-top">
+          <h3>{{ fav.titulo }}</h3>
+          <p>{{ fav.descricao }}</p>
+        </div>
+
+        <div class="progress-container">
+          <div class="progress-info">
+            <span>Progresso</span>
+            <span class="percent">{{ fav.progresso }}%</span>
+          </div>
+
+          <div class="progress-bar">
+            <div 
+              class="fill"
+              [style.width.%]="fav.progresso">
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="footer-item">
+            <i class="pi pi-clock"></i> {{ fav.tempo }}
+          </div>
+
+          <div class="footer-item">
+            <i class="pi pi-bolt"></i> +{{ fav.xp }} XP
+          </div>
+
+          <span class="tag">{{ fav.tag }}</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="favorites-container" *ngIf="!hasFavorites">
+  <div class="empty-favorites">
+    <div class="icon-wrapper">
+      <i class="pi pi-bookmark"></i>
+    </div>
+
+    <h2>Sem favoritos ainda</h2>
+
+    <p>
+      Marque módulos e desafios como favoritos para encontrá-los rápido aqui.
+    </p>
+    <button class="btn-explore">
+      Explorar trilhas
+    </button>
+  </div>
+</div>

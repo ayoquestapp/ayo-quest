@@ -122,9 +122,11 @@ form {
                 box-shadow: 0 6px 14px rgba(0, 0, 0, 0.24);
                 transition: 0.2s;
                 min-width: 190px;
+                cursor: pointer;
 
                 i {
                     font-size: 1rem;
+                    font-weight: 900;
                 }
 
                 &:hover {

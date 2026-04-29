@@ -1,0 +1,133 @@
+.config-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.config-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1.5rem;
+    border-radius: 20px;
+
+    background: linear-gradient(180deg, #071f35 0%, #0b2142 100%);
+    border: 1px solid rgba(95, 168, 224, 0.12);
+
+    .config-text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+
+        h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+    }
+}
+
+.switch {
+    position: relative;
+    width: 46px;
+    height: 24px;
+
+    input {
+        display: none;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        transition: 0.3s;
+
+        &::before {
+            content: "";
+            position: absolute;
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            top: 3px;
+            background: #fff;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+    }
+
+    input:checked + .slider {
+        background: linear-gradient(135deg, #1d578a, #5fa8e0);
+    }
+
+    input:checked + .slider::before {
+        transform: translateX(22px);
+    }
+}
+
+.logout-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 1.5rem;
+    border-radius: 20px;
+
+    background: linear-gradient(180deg, #071f35 0%, #0b2142 100%);
+    border: 1px solid rgba(248, 113, 113, 0.4);
+
+    .logout-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        h3 {
+            margin: 0;
+            color: #f87171;
+        }
+
+        p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+    }
+
+    .logout-icon {
+        background: rgba(248, 113, 113, 0.15);
+        border-radius: 12px;
+        padding: 0.7rem;
+        color: #f87171;
+        font-size: 1.2rem;
+    }
+}
+
+.btn-logout {
+    background: transparent;
+    color: #f87171;
+    border: 1px solid rgba(248, 113, 113, 0.4);
+    border-radius: 10px;
+    padding: 0.6rem 1.4rem;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(248, 113, 113, 0.1);
+        border-color: #f87171;
+        color: #fca5a5;
+        box-shadow: 0 0 0 2px rgba(248, 113, 113, 0.15);
+    }
+
+    &:active {
+        transform: scale(0.97);
+    }
+}

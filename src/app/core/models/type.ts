@@ -45,3 +45,42 @@ export interface AccountMenu {
   xp: number;
   maxXp: number;
 }
+
+export interface Conquista {
+  titulo: string;
+  descricao: string;
+  icone: string;
+  desbloqueada: boolean;
+}
+
+export interface FavoriteItem {
+  id: number;
+  titulo: string;
+  descricao: string;
+  tipo: 'Trilha' | 'Módulo';
+  progresso: number;
+  tempo: string;
+  xp: number;
+  tag: string;
+  icone: string;
+  corBanner: string;
+}
+
+export interface Notificacao {
+  id: number;
+  titulo: string;
+  descricao: string;
+  icone: string;
+
+  lida?: boolean;
+  data?: string;
+  tipo?: 'info' | 'sucesso' | 'alerta';
+}
+
+export interface ConfigOption {
+  id: number;
+  titulo: string;
+  descricao: string;
+  ativo: boolean;
+  icone?: string;
+}

@@ -1,0 +1,14 @@
+<div class="notifications-container">
+
+    <div class="card" *ngFor="let notif of notificacoes">
+        <div class="icon-container">
+            <i [class]="notif.icone"></i>
+        </div>
+
+        <div class="notification-text">
+            <h3>{{ notif.titulo }}</h3>
+            <p>{{ notif.descricao }}</p>
+        </div>
+    </div>
+
+</div>

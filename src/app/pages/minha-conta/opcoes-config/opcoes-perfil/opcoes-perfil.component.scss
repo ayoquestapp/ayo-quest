@@ -1,0 +1,187 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 2.2rem;
+    border-radius: 28px;
+    background: linear-gradient(180deg, #071f35 0%, #0b2142 100%);
+    border: 1px solid rgba(95, 168, 224, 0.12);
+    color: #fff;
+    gap: 1.5rem;
+
+    .card-header {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        gap: 1.5rem;
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            font-family: 'Saira' sans-serif;
+
+
+            label {
+                font-size: 1.05rem;
+                color: #cbd5e1;
+            }
+
+            input {
+                width: 100%;
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                color: #fff;
+                border-radius: 10px;
+                min-height: 36px;
+                padding: 0.5rem;
+            }
+
+
+        }
+
+        .bio {
+            grid-column: span 2;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            max-height: 300px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border-radius: 10px;
+            padding: 0.75rem;
+
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1em;
+
+
+            .p-button-primary {
+                background: linear-gradient(135deg, #1d578a, #5fa8e0);
+                color: #fff;
+                border: none;
+                padding: 0.75rem 1.5rem;
+                border-radius: 10px;
+                font-size: 0.95rem;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    background: linear-gradient(135deg, #1d578a, #5fa8e0);
+                    box-shadow: 0 4px 12px rgba(29, 87, 138, 0.4);
+                }
+            }
+
+            .btn-cancelar {
+                background: transparent;
+                color: #f87171;
+                border: 1px solid rgba(248, 113, 113, 0.4);
+                border-radius: 10px;
+                padding: 0.75rem 1.5rem;
+                font-size: 0.95rem;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    background: rgba(248, 113, 113, 0.1);
+                    border-color: #f87171;
+                    color: #fca5a5;
+                    box-shadow: 0 0 0 2px rgba(248, 113, 113, 0.15);
+                }
+
+                &:active {
+                    background: rgba(248, 113, 113, 0.2);
+                    transform: scale(0.98);
+                }
+            }
+        }
+    }
+}
+
+.configs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+
+.card,
+.small {
+    padding: 1rem;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #071f35 0%, #0b2142 100%);
+    border: 1px solid rgba(95, 168, 224, 0.12);
+}
+
+.small {
+    max-height: 280px;
+}
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+
+    span {
+        color: #cbd5e1;
+    }
+
+    strong {
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .active {
+        color: #4ade80;
+    }
+}
+
+.security {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.btn-security {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.65rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: rgba(95, 168, 224, 0.12);
+        border-color: rgba(95, 168, 224, 0.3);
+    }
+}
+
+.content {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start; 
+  width: 100%;
+}
+
+#form-card {
+    width: 100%;
+}

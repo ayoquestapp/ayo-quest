@@ -1,0 +1,32 @@
+<div class="configs-container">
+
+    <div class="config-grid">
+
+        <div class="config-item" *ngFor="let config of configs">
+            <div class="config-text">
+                <h3>{{ config.titulo }}</h3>
+                <p>{{ config.descricao }}</p>
+            </div>
+
+
+            <label class="switch">
+                <input type="checkbox" [checked]="config.ativo" (change)="config.ativo = !config.ativo">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <!-- <div class="logout-card">
+        <div class="logout-info">
+            <div class="logout-icon">
+                <i class="pi pi-sign-out"></i>
+            </div>
+
+            <div>
+                <h3>Encerrar sessão</h3>
+                <p>Você pode entrar novamente a qualquer momento.</p>
+            </div>
+        </div> 
+        <button class="btn-logout" (click)="logout()">Sair</button>
+    </div> -->
+</div>
