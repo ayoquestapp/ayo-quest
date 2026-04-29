@@ -39,11 +39,13 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [isLoggedIn],
   },
   {
     path: 'cadastro',
-    component: CadastroComponent
+    component: CadastroComponent,
+    canActivate: [isLoggedIn],
   },
   {
     path: 'app',

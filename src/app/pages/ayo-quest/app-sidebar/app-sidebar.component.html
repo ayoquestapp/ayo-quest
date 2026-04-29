@@ -33,20 +33,22 @@
                     <span class="font-medium">Serviço de atenção</span>
                 </a>
             </li>
-            <li routerLinkActive="active" class="logout" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['minha-conta']">
-                <a pRipple
-                    class="item-sidabar">
-                    <i class="pi pi-user mr-2"></i>
-                    <span class="font-medium">Minha conta</span>
-                </a>
-            </li>
-            <li class="logout" (click)="logout()">
-                <a pRipple
-                    class="item-sidabar">
-                    <i class="pi pi-sign-out mr-2"></i>
-                    <span class="font-medium">Sair</span>
-                </a>
-            </li>
+            <div class="footer-sidebar">
+                <li routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['minha-conta']">
+                    <a pRipple
+                        class="item-sidabar">
+                        <i class="pi pi-user mr-2"></i>
+                        <span class="font-medium">Minha conta</span>
+                    </a>
+                </li>
+                <li class="logout" (click)="logout()">
+                    <a pRipple
+                        class="item-sidabar">
+                        <i class="pi pi-sign-out mr-2"></i>
+                        <span class="font-medium">Sair</span>
+                    </a>
+                </li>
+            </div>
         </ul>
     </section>
 </aside>
