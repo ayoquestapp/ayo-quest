@@ -91,7 +91,7 @@ export const routes: Routes = [
           label: 'Minha Conta',
         }
       },
-      { path: '', redirectTo: 'cursos', pathMatch: 'full' }
+      { path: '', redirectTo: 'trilhas', pathMatch: 'full' }
     ]
   }
 ];

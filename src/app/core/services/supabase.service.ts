@@ -2,7 +2,18 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
+const supabase = createClient(
+  environment.supabaseUrl,
+  environment.supabaseKey,
+  {
+    auth: {
+      storage: sessionStorage, 
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true,
+    }
+  }
+);
 
 @Injectable({
   providedIn: 'root'
