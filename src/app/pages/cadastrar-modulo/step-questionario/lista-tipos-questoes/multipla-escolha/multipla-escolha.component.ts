@@ -23,22 +23,22 @@ export class MultiplaEscolhaComponent implements OnInit {
 
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    const data = this.model || { enunciado: '', correta: null, xp: 10, alternativas: [] };
+    this.form = this.model as FormGroup;
 
-    this.form = this.fb.group({
-      enunciado: [data.enunciado, Validators.required],
-      correta: [data.correta], 
-      xp: [data.xp],
-      alternativas: this.fb.array(
-        (data.alternativas.length > 0 ? data.alternativas : [{ texto: '' }, { texto: '' }])
-          .map((alt: any) => this.fb.group({
-            texto: [alt.texto, Validators.required]
-          }))
-      )
-    });
+    const alternativas = this.form.get('alternativas') as FormArray;
+
+    if (!alternativas || alternativas.length === 0) {
+      this.form.setControl(
+        'alternativas',
+        this.fb.array([
+          this.fb.group({ texto: [''] }),
+          this.fb.group({ texto: [''] })
+        ])
+      );
+    }
   }
 
   get alternativas(): FormArray {

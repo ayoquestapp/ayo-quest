@@ -1,1 +1,92 @@
-<p>verdadeiro-falso works!</p>
+<div class="quiz-container">
+  <form [formGroup]="form">
+
+    <div class="question-card">
+      <p-accordion>
+        <p-accordionTab [selected]="true">
+
+          <ng-template pTemplate="header">
+            <div class="header-content">
+              <div class="header-left">
+                <span class="number-circle">{{ index + 1 }}</span>
+
+                <div class="type-tag">
+                  <i class="pi pi-circle-fill"></i>
+                  VERDADEIRO / FALSO
+                </div>
+              </div>
+
+              <div class="header-right">
+                <i class="pi pi-trash icon-btn" (click)="removeQuestion()"></i>
+              </div>
+            </div>
+          </ng-template>
+
+          <div class="content-body">
+
+            <!-- ENUNCIADO -->
+            <div class="input-group">
+              <label>Enunciado</label>
+              <textarea pInputTextarea formControlName="enunciado" rows="3" class="full-width-input"
+                placeholder="Digite a pergunta..."></textarea>
+            </div>
+
+            <!-- ALTERNATIVAS -->
+            <div formArrayName="alternativas" class="options-container">
+
+              <div *ngFor="let alt of alternativas.controls; let i = index" [formGroupName]="i" class="option-row">
+
+                <div formArrayName="alternativas">
+
+                  <div *ngFor="let alt of alternativas.controls; let i = index" [formGroupName]="i" class="option-row">
+
+                    <div class="option-content">
+
+                      <input pInputText formControlName="texto">
+
+                      <div class="vf-toggle">
+
+                        <div class="vf-option" [class.active]="alt.get('valor')?.value === true"
+                          (click)="alt.get('valor')?.setValue(true)">
+                          ✔ Verdadeiro
+                        </div>
+
+                        <div class="vf-option" [class.active]="alt.get('valor')?.value === false"
+                          (click)="alt.get('valor')?.setValue(false)">
+                          ✖ Falso
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- ADD -->
+            <div class="add-option-row">
+              <span (click)="addAlternativa()">
+                <i class="pi pi-plus"></i> Adicionar afirmação
+              </span>
+            </div>
+
+            <!-- XP -->
+            <div class="footer-row">
+              <div class="xp-badge">
+                <i class="pi pi-bolt"></i>
+                <span>XP</span>
+                <input type="number" formControlName="xp" class="xp-input">
+              </div>
+            </div>
+
+          </div>
+
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+  </form>
+</div>

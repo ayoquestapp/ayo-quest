@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" [formGroup]="form">
 
   <div class="card-header">
     <div class="top-line">
@@ -16,22 +16,23 @@
 
     <div class="p-field">
       <label>URL do vídeo</label>
-      <input type="text" pInputText [(ngModel)]="videoUrl" placeholder="https://..." />
+      <input type="text" pInputText placeholder="https://..." formControlName="videoAulaUrl" />
     </div>
   </div>
 
   <div class="content-block">
     <h3>Conteúdo acadêmico</h3>
-    <textarea pInputTextarea [(ngModel)]="conteudo" rows="10"
+    <textarea pInputTextarea formControlName="valor" rows="10"
       placeholder="## Introdução&#10;Explique o conteúdo aqui..."></textarea>
 
     <span class="char-count">
-      {{ conteudo.length }} caracteres
+      {{ form.get('conteudoAcademico')?.value?.length || 0 }} caracteres
     </span>
   </div>
 
   <div class="p-d-flex p-jc-between p-mt-4">
-    <p-button label="Voltar" icon="pi pi-angle-left" (onClick)="prevStep()" styleClass="p-button-secondary p-button-text p-mr-2">
+    <p-button label="Voltar" icon="pi pi-angle-left" (onClick)="prevStep()"
+      styleClass="p-button-secondary p-button-text p-mr-2">
     </p-button>
 
     <div>

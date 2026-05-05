@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" [formGroup]="form">
     <div class="card-header">
         <div class="top-line">
             <h2>Identificação do módulo</h2>
@@ -9,33 +9,33 @@
 
     <div class="p-field">
         <label for="tituloModulo">Título do módulo</label>
-        <input id="tituloModulo" type="text" pInputText [(ngModel)]="tituloModulo" />
+        <input id="tituloModulo" type="text" pInputText formControlName="nome"/>
     </div>
 
     <div class="p-field">
         <label for="resumo">Resumo</label>
-        <textarea id="resumo" pInputTextarea [(ngModel)]="resumo"></textarea>
+        <textarea id="resumo" pInputTextarea  formControlName="descricao"></textarea>
     </div>
 
     <div class="p-formgrid">
         <div>
             <div class="p-field">
                 <label>Trilha</label>
-                <p-dropdown [options]="trilhas" [(ngModel)]="trilhaSelecionada" optionLabel="name"></p-dropdown>
+                <p-dropdown [options]="trilhas"  optionLabel="name" formControlName="trilha"></p-dropdown>
             </div>
         </div>
 
         <div>
             <div class="p-field">
                 <label>Carga horária</label>
-                <input type="text" pInputText [(ngModel)]="cargaHoraria" />
+                <input type="text" pInputText  />
             </div>
         </div>
 
         <div>
             <div class="p-field">
                 <label>XP</label>
-                <p-inputNumber [(ngModel)]="recompensaXP"></p-inputNumber>
+                <p-inputNumber formControlName="xpAoConcluir"></p-inputNumber>
             </div>
         </div>
     </div>

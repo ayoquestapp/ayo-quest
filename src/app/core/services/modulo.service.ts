@@ -26,4 +26,8 @@ export class ModuloService {
   atualizar(id: number, modulo: any): Observable<any> {
     return this.http.put(`${this.API}/alterar/${id}`, modulo);
   }
+
+  buscarPorId(id: number): Observable<any> {
+    return this.http.get<any>(`${this.API}/${id}`);
+  }
 }

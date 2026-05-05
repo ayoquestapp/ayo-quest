@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { PrimeNgModule } from '../../core/primeNgModule';
 
 import { StepIdentificacaoComponent } from './step-identificacao/step-identificacao.component';
 import { StepConteudoComponent } from "./step-conteudo/step-conteudo.component";
 import { StepQuestionarioComponent } from "./step-questionario/step-questionario.component";
 import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule, FormArray } from '@angular/forms';
-import { ModuloPayload } from '../../core/models/type';
+import { ModuloPayload, TipoConteudo } from '../../core/models/type';
+import { tick } from '@angular/core/testing';
 
 @Component({
   selector: 'app-cadastrar-modulo',
@@ -23,7 +24,7 @@ import { ModuloPayload } from '../../core/models/type';
   templateUrl: './cadastrar-modulo.component.html',
   styleUrl: './cadastrar-modulo.component.scss'
 })
-export class CadastrarModuloComponent {
+export class CadastrarModuloComponent implements OnInit, OnChanges {
   activeStep: number = 0;
   form!: FormGroup;
   @Output() onSave = new EventEmitter<ModuloPayload>();
@@ -38,20 +39,36 @@ export class CadastrarModuloComponent {
       identificacao: this.fb.group({
         nome: ['', Validators.required],
         descricao: [''],
-        categoria: ['FRONT-END'],
-        status: ['PUBLICADO']
+        trilha: ['', [Validators.required]],
+        xpAoConcluir: ['', [Validators.required]]
       }),
       conteudo: this.fb.group({
-        aulas: this.fb.array([])
+        videoAulaUrl: [''],
+        conteudoAcademico: [''],
+        valor: [''],
       }),
       questionario: this.fb.group({
-        questoes: this.fb.array([])
+        notaMinima: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
+        totalQuestao: ['', [Validators.required, Validators.min(1)]],
+        questoes: this.fb.array([
+
+        ])
       })
     });
+  }
 
-    if (this.modulo) {
-      this.carregarModulo(this.modulo);
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['modulo'] && this.modulo) {
+      setTimeout(() => {
+        this.resetarFormulario();
+        this.carregarModulo(this.modulo);
+      });
     }
+  }
+
+  resetarFormulario() {
+    this.form.reset();
+    this.questoes.clear();
   }
 
   cancelar() {
@@ -66,14 +83,28 @@ export class CadastrarModuloComponent {
 
     const v = this.form.value;
 
+    const conteudos = [];
+
+    if (v.conteudo.videoAulaUrl) {
+      conteudos.push({
+        tipo: TipoConteudo.VIDEO,
+        valor: v.conteudo.videoAulaUrl,
+        titulo: 'Vídeo aula'
+      });
+    }
+
+    if (v.conteudo.conteudoAcademico) {
+      conteudos.push({
+        tipo: TipoConteudo.TEXTO,
+        valor: v.conteudo.conteudoAcademico,
+        titulo: 'Conteúdo acadêmico'
+      });
+    }
+
     const payload: ModuloPayload = {
       nome: v.identificacao.nome,
       descricao: v.identificacao.descricao,
-
-      conteudos: v.conteudo.aulas?.map((a: any) => ({
-        titulo: a.titulo || 'Aula',
-        descricao: a.conteudo || ''
-      })) || [],
+      conteudos: conteudos,
 
       questoes: v.questionario.questoes?.map((q: any) => ({
         tipo: q.tipo,
@@ -95,25 +126,41 @@ export class CadastrarModuloComponent {
     this.form.patchValue({
       identificacao: {
         nome: modulo.nome,
-        descricao: modulo.descricao
+        descricao: modulo.descricao,
+        trilha: modulo.trilha || '',
+        xpAoConcluir: modulo.xpAoConcluir || ''
+      },
+      questionario: {
+        notaMinima: modulo.notaMinima || 0,
+        totalQuestao: modulo.totalQuestao || 1
       }
     });
 
     modulo.conteudos?.forEach((c: any) => {
-      this.aulas.push(this.fb.group({
-        titulo: [c.titulo],
-        conteudo: [c.descricao]
-      }));
+      if (c.tipo === 'VIDEO') {
+        this.form.get('conteudo.videoAulaUrl')?.setValue(c.valor);
+      }
+
+      if (c.tipo === 'TEXTO') {
+        this.form.get('conteudo.conteudoAcademico')?.setValue(c.valor);
+      }
     });
 
     modulo.questoes?.forEach((q: any) => {
+
+      const alternativas = q.alternativas || [];
+
+      const corretaIndex = alternativas.length > 0
+        ? alternativas.findIndex((a: any) => a.correta)
+        : null;
+
       const questao = this.fb.group({
-        tipo: [q.tipo],
+        tipo: [q.tipo || 'MULTIPLA_ESCOLHA'], // fallback
         enunciado: [q.enunciado],
         xp: [q.xp],
-        correta: [q.alternativas.findIndex((a: any) => a.correta)],
+        correta: [corretaIndex >= 0 ? corretaIndex : null],
         alternativas: this.fb.array(
-          q.alternativas.map((a: any) =>
+          alternativas.map((a: any) =>
             this.fb.group({
               texto: [a.texto]
             })
@@ -135,10 +182,6 @@ export class CadastrarModuloComponent {
 
   get questionarioForm(): FormGroup {
     return this.form.get('questionario') as FormGroup;
-  }
-
-  get aulas() {
-    return this.form.get('conteudo.aulas') as FormArray;
   }
 
   get questoes() {

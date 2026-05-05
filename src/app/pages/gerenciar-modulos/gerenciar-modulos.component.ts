@@ -44,8 +44,16 @@ export class GerenciarModulosComponent implements OnInit {
   }
 
   editarModulo(modulo: any) {
-    this.moduloSelecionado = { ...modulo };
-    this.view = 'form';
+    this.moduloService.buscarPorId(modulo.id).subscribe({
+      next: (data) => {
+        console.log('MODULO BACK:', data); // 👈 ESSENCIAL
+        this.moduloSelecionado = data;
+        this.view = 'form';
+      },
+      error: (err) => {
+        console.error('Erro ao buscar módulo:', err);
+      }
+    });
   }
 
   salvarModulo(modulo: any) {

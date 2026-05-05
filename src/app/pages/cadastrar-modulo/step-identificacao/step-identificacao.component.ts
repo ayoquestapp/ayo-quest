@@ -2,12 +2,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Trilha } from '../../../core/models/type';
 import { CommonModule } from '@angular/common';
 import { PrimeNgModule } from '../../../core/primeNgModule';
-import { FormGroup, FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-step-identificacao',
   standalone: true,
-  imports: [CommonModule,PrimeNgModule,FormsModule],
+  imports: [CommonModule, PrimeNgModule, FormsModule, ReactiveFormsModule],
   templateUrl: './step-identificacao.component.html',
   styleUrl: './step-identificacao.component.scss'
 })

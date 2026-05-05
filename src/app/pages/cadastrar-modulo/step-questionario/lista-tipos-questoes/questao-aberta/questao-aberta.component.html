@@ -1,1 +1,58 @@
-<p>questao-aberta works!</p>
+<div class="quiz-container">
+  <form [formGroup]="form">
+    <div class="question-card">
+      <p-accordion>
+        <p-accordionTab [selected]="true">
+
+          <ng-template pTemplate="header">
+            <div class="header-content">
+              <div class="header-left">
+                <span class="number-circle">{{ index + 1 }}</span>
+                <div class="type-tag">
+                  <i class="pi pi-circle-fill"></i>
+                  QUESTÃO ABERTA
+                </div>
+              </div>
+
+              <div class="header-right">
+                <i class="pi pi-trash icon-btn" (click)="removeQuestion()"></i>
+              </div>
+            </div>
+          </ng-template>
+
+          <div class="content-body">
+
+            <!-- Enunciado -->
+            <div class="input-group">
+              <label>Enunciado</label>
+              <textarea pInputTextarea formControlName="enunciado"
+                rows="3"
+                class="full-width-input"
+                placeholder="Digite a pergunta..."></textarea>
+            </div>
+
+            <!-- Resposta esperada -->
+            <div class="input-group">
+              <label>Resposta esperada</label>
+              <textarea pInputTextarea formControlName="respostaEsperada"
+                rows="4"
+                class="full-width-input"
+                placeholder="Descreva a resposta ideal..."></textarea>
+            </div>
+
+            <!-- XP -->
+            <div class="footer-row">
+              <div class="xp-badge">
+                <i class="pi pi-bolt"></i>
+                <span>XP</span>
+                <input type="number" formControlName="xp" class="xp-input">
+              </div>
+            </div>
+
+          </div>
+
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+  </form>
+</div>

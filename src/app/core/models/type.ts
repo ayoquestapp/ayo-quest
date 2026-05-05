@@ -45,9 +45,15 @@ export interface ModuloPayload {
   questoes: Questao[];
 }
 
+export enum TipoConteudo {
+  VIDEO = 'VIDEO',
+  TEXTO = 'TEXTO'
+}
+
 export interface Conteudo {
   titulo: string;
-  descricao: string;
+  tipo: TipoConteudo;
+  valor: string;
 }
 
 export interface Questao {

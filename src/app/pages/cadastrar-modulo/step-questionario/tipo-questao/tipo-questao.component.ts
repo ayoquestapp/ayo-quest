@@ -11,7 +11,7 @@ import { PrimeNgModule } from '../../../../core/primeNgModule';
   styleUrl: './tipo-questao.component.scss'
 })
 export class TipoQuestaoComponent {
-  @Output() typeSelected = new EventEmitter<tipoQuestaoId>();
+  @Output() typeSelected = new EventEmitter<any>();
 
   questionTypes = [
     {
@@ -30,7 +30,7 @@ export class TipoQuestaoComponent {
       id: 'VERDADEIRO_FALSO' as tipoQuestaoId,
       label: 'Verdadeiro / Falso',
       description: 'Resposta binária.',
-      icon: 'pi-sliders-h' // Ou pi-toggle-on
+      icon: 'pi-sliders-h'
     },
     {
       id: 'QUESTAO_ABERTA' as tipoQuestaoId,
@@ -41,7 +41,9 @@ export class TipoQuestaoComponent {
   ];
 
   onSelect(typeId: tipoQuestaoId) {
-    this.typeSelected.emit(typeId);
+    this.typeSelected.emit({
+      tipo: typeId
+    });
   }
 
 }
