@@ -33,6 +33,13 @@
                     <span class="font-medium">Serviço de atenção</span>
                 </a>
             </li>
+            <li routerLinkActive="active" [routerLink]="['/app/gerenciar-modulo']" [routerLinkActiveOptions]="{ exact: true }">
+                <a pRipple
+                    class="item-sidabar">
+                    <i class="pi pi-shield mr-2"></i>
+                    <span class="font-medium">Gerenciar módulos</span>
+                </a>
+            </li>
             <div class="footer-sidebar">
                 <li routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['minha-conta']">
                     <a pRipple

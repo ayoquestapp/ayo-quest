@@ -32,6 +32,9 @@ import { ChipModule } from 'primeng/chip';
 import { StepperModule } from 'primeng/stepper';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { AccordionModule } from 'primeng/accordion';
+
 
 
 
@@ -68,6 +71,8 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     StepperModule,
     MegaMenuModule,
     OverlayPanelModule,
+    InputNumberModule,
+    AccordionModule
   ],
   exports: [
     ButtonModule,
@@ -100,6 +105,9 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     ChipModule,
     MegaMenuModule,
     OverlayPanelModule,
+    InputNumberModule,
+    StepperModule,
+    AccordionModule
   ]
 })
 export class PrimeNgModule {}

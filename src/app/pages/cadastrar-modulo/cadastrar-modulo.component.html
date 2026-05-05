@@ -1,0 +1,45 @@
+<div class="cadastrar-modulo">
+    <div class="stepper-container">
+        <p-stepper [activeStep]="activeStep" (activeStepChange)="activeStep = $event" [ngClass]="'step-' + activeStep">
+            <p-stepperPanel header="Identificação">
+                <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
+                    <app-step-identificacao [form]="identificacaoForm" (onNext)="nextCallback.emit()"
+                        (onCancel)="cancelar()">
+                    </app-step-identificacao>
+                </ng-template>
+            </p-stepperPanel>
+
+            <p-stepperPanel header="Conteúdo">
+                <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback"
+                    let-index="index">
+                    <app-step-conteudo [form]="conteudoForm" (onNext)="nextCallback.emit()"
+                        (onPrev)="prevCallback.emit()" (onCancel)="cancelar()">
+                    </app-step-conteudo>
+                </ng-template>
+            </p-stepperPanel>
+
+            <p-stepperPanel header="Questionário">
+                <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback"
+                    let-index="index">
+                    <app-step-questionario [form]="questionarioForm" (onNext)="nextCallback.emit()"
+                        (onPrev)="prevCallback.emit()" (onCancel)="cancelar()">
+                    </app-step-questionario>
+                </ng-template>
+            </p-stepperPanel>
+
+            <p-stepperPanel header="Revisar">
+                <ng-template pTemplate="content" let-prevCallback="prevCallback" let-index="index">
+                    <div class="card">
+                        <h2>Revisar e Finalizar</h2>
+                        <div class="p-d-flex p-jc-between p-mt-4">
+                            <p-button label="Voltar" (onClick)="prevCallback.emit()" icon="pi pi-angle-left"
+                                styleClass="p-button-secondary p-button-text"></p-button>
+                            <p-button label="Finalizar" (onClick)="finalizar()" icon="pi pi-check"
+                                iconPos="right"></p-button>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-stepperPanel>
+        </p-stepper>
+    </div>
+</div>

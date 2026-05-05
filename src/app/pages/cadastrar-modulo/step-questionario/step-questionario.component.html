@@ -1,0 +1,15 @@
+<div class="card">
+    <h2>Questionário</h2>
+    <app-config-quiz></app-config-quiz>
+    <app-tipo-questao (typeSelected)="addQuestao($event)"></app-tipo-questao>
+    <div *ngFor="let q of questoes; let i = index">
+        <app-multipla-escolha *ngIf="q.tipo === 'MULTIPLA_ESCOLHA'" [model]="q" (remove)="removerQuestao(i)">
+        </app-multipla-escolha>
+    </div>
+    <div class="p-d-flex p-jc-between p-mt-4">
+        <p-button label="Voltar" (onClick)="prevStep()" icon="pi pi-angle-left"
+            styleClass="p-button-secondary p-button-text"></p-button>
+        <p-button label="Próximo" (onClick)="nextStep()" iconPos="right" styleClass="btn-proximo">
+        </p-button>
+    </div>
+</div>

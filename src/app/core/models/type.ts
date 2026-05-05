@@ -24,7 +24,7 @@ export interface StatusCard {
   value: number | string,
   label: string,
   variant: string,
-  
+
 }
 
 export interface Module {
@@ -36,6 +36,30 @@ export interface Module {
   lessons: number;
   xp: number;
   status: 'completed' | 'in-progress' | 'pending';
+}
+
+export interface ModuloPayload {
+  nome: string;
+  descricao: string;
+  conteudos: Conteudo[];
+  questoes: Questao[];
+}
+
+export interface Conteudo {
+  titulo: string;
+  descricao: string;
+}
+
+export interface Questao {
+  tipo: string;
+  enunciado: string;
+  xp: number;
+  alternativas?: Alternativa[];
+}
+
+export interface Alternativa {
+  texto: string;
+  correta: boolean;
 }
 
 export interface AccountMenu {
@@ -83,4 +107,59 @@ export interface ConfigOption {
   descricao: string;
   ativo: boolean;
   icone?: string;
+}
+
+export interface Trilha {
+  name: string;
+  code: string;
+}
+
+export type QuestionType =
+  | 'multiple'
+  | 'checkbox'
+  | 'boolean'
+  | 'short';
+
+export interface Question {
+  id: string;
+  type: QuestionType;
+  statement: string;
+  options?: string[];
+  required: boolean;
+  xp: number;
+}
+
+export interface QuizConfig {
+  minScore: number;
+  totalQuestions: number;
+}
+
+export interface Quiz {
+  config: QuizConfig;
+  questions: Question[];
+}
+
+export type tipoQuestaoId = 'MULTIPLA_ESCOLHA' | 'CAIXAS_SELECAO' | 'VERDADEIRO_FALSO' | 'QUESTAO_ABERTA';
+
+export interface Alternativa {
+  texto: string;
+  isCorreta: boolean;
+}
+export interface Question {
+  id: string;
+  tipo: tipoQuestaoId;
+  enunciado: string;
+  xp: number;
+
+  alternativas?: Alternativa[];
+  correta?: number | boolean | string;
+  gabarito?: string;
+}
+
+export interface QuestionTypeConfig {
+  id: tipoQuestaoId;
+  label: string;
+  description: string;
+  icon: string;
+  color?: string;
 }

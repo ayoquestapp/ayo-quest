@@ -1,0 +1,46 @@
+<div class="card">
+
+  <div class="card-header">
+    <div class="top-line">
+      <h2>Conteúdo do módulo</h2>
+    </div>
+  </div>
+
+  <p>Adicione vídeo e conteúdo acadêmico do módulo.</p>
+
+  <div class="content-block">
+    <h3>Vídeo-aula</h3>
+    <p class="subtitle">
+      Cole o link do vídeo (YouTube, Vimeo, Loom). Opcional.
+    </p>
+
+    <div class="p-field">
+      <label>URL do vídeo</label>
+      <input type="text" pInputText [(ngModel)]="videoUrl" placeholder="https://..." />
+    </div>
+  </div>
+
+  <div class="content-block">
+    <h3>Conteúdo acadêmico</h3>
+    <textarea pInputTextarea [(ngModel)]="conteudo" rows="10"
+      placeholder="## Introdução&#10;Explique o conteúdo aqui..."></textarea>
+
+    <span class="char-count">
+      {{ conteudo.length }} caracteres
+    </span>
+  </div>
+
+  <div class="p-d-flex p-jc-between p-mt-4">
+    <p-button label="Voltar" icon="pi pi-angle-left" (onClick)="prevStep()" styleClass="p-button-secondary p-button-text p-mr-2">
+    </p-button>
+
+    <div>
+      <p-button label="Cancelar" (onClick)="cancel()" styleClass="p-button-secondary p-button-text p-mr-2">
+      </p-button>
+
+      <p-button label="Próximo" (onClick)="nextStep()">
+      </p-button>
+    </div>
+  </div>
+
+</div>

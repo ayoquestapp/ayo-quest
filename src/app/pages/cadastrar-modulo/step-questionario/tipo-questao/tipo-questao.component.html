@@ -1,0 +1,21 @@
+<div class="selector-container">
+  <h3 class="title">Adicionar nova questão</h3>
+  
+  <div class="cards-grid">
+    <div *ngFor="let type of questionTypes" class="type-card">
+      <div class="icon-box">
+        <i [class]="'pi ' + type.icon"></i>
+      </div>
+      
+      <div class="info">
+        <span class="label">{{ type.label }}</span>
+        <p class="description">{{ type.description }}</p>
+      </div>
+
+      <button type="button" class="add-btn" (click)="onSelect(type.id)">
+        <i class="pi pi-plus"></i>
+        Adicionar
+      </button>
+    </div>
+  </div>
+</div>

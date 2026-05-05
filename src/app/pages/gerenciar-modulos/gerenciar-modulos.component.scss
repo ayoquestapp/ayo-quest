@@ -1,0 +1,181 @@
+.gerenciar-modulos {
+    min-height: calc(100vh - 69px);
+    padding: 2rem 2rem 2.5rem;
+    background:
+        linear-gradient(180deg, #171c54 0%, #0d102f 100%);
+    background-size: cover;
+    background-position: center;
+    color: #f5f7fb;
+    font-family: 'Saira', sans-serif;
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 2.2rem;
+        border-radius: 28px;
+        background: linear-gradient(180deg, #071f35 0%, #0b2142 100%);
+        border: 1px solid rgba(95, 168, 224, 0.12);
+        color: #fff;
+        gap: 1.5rem;
+        min-height: 500px;
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+
+            .btn-novo {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.5rem 1rem;
+                background: #5fa8e0;
+                border-radius: 10px;
+                border: none;
+                font-family: 'Saira', sans-serif;
+                color: white;
+            }
+        }
+
+        .lista-modulos {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            p {
+                vertical-align: middle;
+            }
+
+            .modulo-card {
+                display: flex;
+                align-items: center;
+                gap: 1.2rem;
+                padding: 1.2rem;
+                border-radius: 18px;
+                background: rgba(255, 255, 255, 0.04);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                transition: 0.2s;
+
+                &:hover {
+                    border-color: rgba(95, 168, 224, 0.4);
+                    transform: translateY(-2px);
+                }
+
+                .icon {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: linear-gradient(135deg, #3b82f6, #5fa8e0);
+                    color: white;
+                    font-size: 1.2rem;
+                }
+
+                .conteudo {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.4rem;
+
+                    .top {
+                        display: flex;
+                        gap: 0.5rem;
+                        align-items: center;
+
+                        .tag {
+                            font-size: 0.7rem;
+                            padding: 2px 8px;
+                            border-radius: 999px;
+                            background: rgba(95, 168, 224, 0.2);
+                            color: #5fa8e0;
+                        }
+
+                        .status {
+                            font-size: 0.7rem;
+                            padding: 2px 8px;
+                            border-radius: 999px;
+
+                            &.PUBLICADO {
+                                background: rgba(34, 197, 94, 0.2);
+                                color: #22c55e;
+                            }
+
+                            &.RASCUNHO {
+                                background: rgba(148, 163, 184, 0.2);
+                                color: #94a3b8;
+                            }
+                        }
+                    }
+
+                    h3 {
+                        margin: 0;
+                        font-size: 1.1rem;
+                    }
+
+                    p {
+                        margin: 0;
+                        font-size: 0.85rem;
+                        opacity: 0.7;
+                    }
+
+                    .meta {
+                        display: flex;
+                        gap: 1rem;
+                        font-size: 0.75rem;
+                        opacity: 0.6;
+
+                        span {
+                            display: flex;
+                            align-items: center;
+                            gap: 0.3rem;
+                        }
+                    }
+                }
+
+                .acoes {
+                    display: flex;
+                    gap: 0.5rem;
+                }
+            }
+        }
+
+        .modulo-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.2rem;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            .info {
+                display: flex;
+                flex-direction: column;
+                gap: 0.2rem;
+
+                h3 {
+                    margin: 0;
+                    font-size: 1.1rem;
+                }
+
+                span {
+                    font-size: 0.85rem;
+                    opacity: 0.7;
+                }
+            }
+
+            .acoes {
+                display: flex;
+                gap: 0.5rem;
+            }
+        }
+
+        .empty {
+            text-align: center;
+            opacity: 0.6;
+        }
+    }
+}

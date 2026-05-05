@@ -1,0 +1,36 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 2.2rem;
+    border-radius: 28px;
+    background: linear-gradient(180deg, #071f35 0%, #0b2142 100%);
+    border: 1px solid rgba(95, 168, 224, 0.12);
+    color: #fff;
+    gap: 1.5rem;
+
+    p {
+        margin-top: -1rem;
+        margin-bottom: 1rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+    }
+
+    ::ng-deep .btn-proximo {
+        border-radius: 10px;
+        padding: 0.7rem 1.4rem;
+        background: linear-gradient(135deg, #3b82f6, #5fa8e0);
+        border: none !important;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        color: white;
+    }
+
+    ::ng-deep .btn-proximo:hover {
+        filter: brightness(1.1);
+        background: linear-gradient(135deg, #3b82f6, #5fa8e0);
+    }
+
+    
+
+}

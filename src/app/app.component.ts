@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent,FooterComponent , CommonModule],
+  imports: [RouterOutlet, HeaderComponent,FooterComponent , CommonModule ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -30,7 +30,6 @@ export class AppComponent {
       this.isLogged = !!session;
     });
 
-    // sua lógica do home
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: any) => {
