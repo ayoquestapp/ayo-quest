@@ -21,14 +21,14 @@
         <div>
             <div class="p-field">
                 <label>Trilha</label>
-                <p-dropdown [options]="trilhas"  optionLabel="name" formControlName="trilha"></p-dropdown>
+                <p-dropdown [options]="trilhas" optionLabel="nome" optionValue="id" formControlName="trilha"></p-dropdown>
             </div>
         </div>
 
         <div>
             <div class="p-field">
                 <label>Carga horária</label>
-                <input type="text" pInputText  />
+                <input type="number" pInputText  formControlName="cargaHoraria"/>
             </div>
         </div>
 

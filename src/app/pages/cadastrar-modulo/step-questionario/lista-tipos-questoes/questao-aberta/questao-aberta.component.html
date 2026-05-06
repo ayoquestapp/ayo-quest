@@ -13,7 +13,7 @@
                   QUESTÃO ABERTA
                 </div>
               </div>
-
+              
               <div class="header-right">
                 <i class="pi pi-trash icon-btn" (click)="removeQuestion()"></i>
               </div>
@@ -21,8 +21,6 @@
           </ng-template>
 
           <div class="content-body">
-
-            <!-- Enunciado -->
             <div class="input-group">
               <label>Enunciado</label>
               <textarea pInputTextarea formControlName="enunciado"
@@ -31,7 +29,6 @@
                 placeholder="Digite a pergunta..."></textarea>
             </div>
 
-            <!-- Resposta esperada -->
             <div class="input-group">
               <label>Resposta esperada</label>
               <textarea pInputTextarea formControlName="respostaEsperada"
@@ -40,7 +37,6 @@
                 placeholder="Descreva a resposta ideal..."></textarea>
             </div>
 
-            <!-- XP -->
             <div class="footer-row">
               <div class="xp-badge">
                 <i class="pi pi-bolt"></i>
@@ -48,9 +44,7 @@
                 <input type="number" formControlName="xp" class="xp-input">
               </div>
             </div>
-
           </div>
-
         </p-accordionTab>
       </p-accordion>
     </div>

@@ -1,13 +1,12 @@
 <div class="card">
   <h2>Questionário</h2>
 
-  <app-config-quiz></app-config-quiz>
+  <app-config-quiz [form]="form" [totalQuestao]="questoes.length"></app-config-quiz>
 
   <app-tipo-questao (typeSelected)="addQuestao($event)"></app-tipo-questao>
 
   <div *ngFor="let q of questoes.controls; let i = index">
-
-    <app-multipla-escolha *ngIf="q.get('tipo')?.value === 'MULTIPLA_ESCOLHA'" [model]="$any(q)"
+    <app-multipla-escolha *ngIf="q.get('tipo')?.value === 'MULTIPLA_ESCOLHA'" [model]="$any(q)" [index]="i"
       (remove)="removerQuestao(i)">
     </app-multipla-escolha>
 
@@ -15,13 +14,25 @@
       (remove)="removerQuestao(i)">
     </app-verdadeiro-falso>
 
-    <app-caixas-selecao *ngIf="q.get('tipo')?.value === 'CAIXAS_SELECAO'" [form]="$any(q)" [index]="i" (remove)="removerQuestao(i)">
+    <app-caixas-selecao *ngIf="q.get('tipo')?.value === 'CAIXAS_SELECAO'" [form]="$any(q)" [index]="i"
+      (remove)="removerQuestao(i)">
     </app-caixas-selecao>
 
-    <app-questao-aberta
-      *ngIf=" q.get('tipo')?.value==='QUESTAO_ABERTA'"
-      [form]=" $any(q)" (remove)="removerQuestao(i)">
-      </app-questao-aberta>
+    <app-questao-aberta *ngIf=" q.get('tipo')?.value ==='QUESTAO_ABERTA'" [form]=" $any(q)" [index]="i"
+      (remove)="removerQuestao(i)">
+    </app-questao-aberta>
+  </div>
+  <div class="p-d-flex p-jc-between p-mt-4">
+    <p-button label="Voltar" icon="pi pi-angle-left" (onClick)="prevStep()"
+      styleClass="p-button-secondary p-button-text p-mr-2">
+    </p-button>
 
+    <div>
+      <p-button label="Cancelar" (onClick)="cancel()" styleClass="p-button-secondary p-button-text p-mr-2">
+      </p-button>
+
+      <p-button label="Finalizar" (onClick)="finish.emit()">
+      </p-button>
+    </div>
   </div>
 </div>

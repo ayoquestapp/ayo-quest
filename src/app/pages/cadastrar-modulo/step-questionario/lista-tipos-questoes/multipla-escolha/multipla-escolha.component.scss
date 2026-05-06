@@ -1,5 +1,5 @@
 .quiz-container {
-  padding: 2rem;
+  // padding: 2rem;
   background: transparent;
 
   .question-card {
@@ -19,7 +19,7 @@
           border: none !important;
           padding: 1.25rem !important;
           display: flex !important;
-          flex-direction: row-reverse !important; // Seta na direita
+          flex-direction: row-reverse !important; 
           align-items: center !important;
           justify-content: space-between !important;
           text-decoration: none !important;
@@ -28,7 +28,6 @@
             box-shadow: none !important;
           }
 
-          // Forçar o conteúdo do template a ocupar o espaço
           .p-accordion-header-text {
             width: 100% !important;
             margin: 0 !important;
@@ -48,8 +47,6 @@
         color: #fff !important;
       }
     }
-
-    // ESTILO DO RADIO BUTTON
     .p-radiobutton {
       width: 20px;
       height: 20px;
@@ -71,7 +68,6 @@
       }
     }
 
-    // ESTILO DO CHECKBOX
     .p-checkbox .p-checkbox-box {
       background: rgba(51, 122, 183, 0.1) !important;
       border: 1px solid #337ab7 !important;
@@ -336,13 +332,11 @@
       align-items: center;
       justify-content: center;
 
-      // hover suave
       &:hover {
         border-color: #00a896 !important;
         box-shadow: 0 0 0 4px rgba(0, 168, 150, 0.08);
       }
 
-      // quando selecionado
       &.p-highlight {
         border-color: #00a896 !important;
         background: transparent !important;

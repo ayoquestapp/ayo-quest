@@ -26,6 +26,7 @@ export class GerenciarModulosComponent implements OnInit {
     this.moduloService.listar().subscribe({
       next: (data) => {
         this.modulos = data;
+        console.log('MODULOS:', this.modulos);
       },
       error: (err) => {
         console.error('Erro ao listar:', err);
@@ -46,7 +47,7 @@ export class GerenciarModulosComponent implements OnInit {
   editarModulo(modulo: any) {
     this.moduloService.buscarPorId(modulo.id).subscribe({
       next: (data) => {
-        console.log('MODULO BACK:', data); // 👈 ESSENCIAL
+        console.log('MODULO BACK:', data); 
         this.moduloSelecionado = data;
         this.view = 'form';
       },

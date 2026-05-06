@@ -3,14 +3,8 @@
     <div class="header">
       <h2>Gerenciar Módulos</h2>
 
-      <button
-        pButton
-        label="Novo Módulo"
-        icon="pi pi-plus"
-        class="btn-novo"
-        (click)="novoModulo()"
-        *ngIf="view === 'lista'"
-      ></button>
+      <button pButton label="Novo Módulo" icon="pi pi-plus" class="btn-novo" (click)="novoModulo()"
+        *ngIf="view === 'lista'"></button>
     </div>
 
     <div *ngIf="view === 'lista'" class="lista-modulos">
@@ -22,37 +16,31 @@
 
         <div class="conteudo">
           <div class="top">
-            <span class="tag">{{ modulo.categoria || 'FRONT-END' }}</span>
-            <span class="status" [ngClass]="modulo.status">
+            <span class="tag">{{ modulo.trilha?.nome }}</span>
+            <!-- <span class="status" [ngClass]="modulo.status">
               {{ modulo.status || 'PUBLICADO' }}
-            </span>
+            </span> -->
           </div>
 
           <h3>{{ modulo.nome }}</h3>
           <p>{{ modulo.descricao }}</p>
 
           <div class="meta">
-            <span><i class="pi pi-question-circle"></i> {{ modulo.questoes || 0 }} questões</span>
-            <span><i class="pi pi-bolt"></i> {{ modulo.xp || 0 }} XP</span>
-            <span><i class="pi pi-calendar"></i> Atualizado recentemente</span>
+            <span>
+              <i class="pi pi-question-circle"></i>
+              {{ modulo.questoes?.length || 0 }}
+              {{ (modulo.questoes?.length || 0) > 1 ? 'Questões' : 'Questão' }}
+            </span>
+            <span><i class="pi pi-bolt"></i> {{ modulo.xpAoConcluir || 0 }} XP</span>
+            <span><i class="pi pi-pi-clock"></i>{{modulo.cargaHoraria || 0}}hrs</span>
           </div>
         </div>
 
         <div class="acoes">
-          <button
-            pButton
-            label="Editar"
-            icon="pi pi-pencil"
-            class="p-button-outlined"
-            (click)="editarModulo(modulo)"
-          ></button>
+          <button pButton label="Editar" icon="pi pi-pencil" class="p-button-outlined"
+            (click)="editarModulo(modulo)"></button>
 
-          <button
-            pButton
-            icon="pi pi-trash"
-            class="p-button-text p-button-danger"
-            (click)="removerModulo(i)"
-          ></button>
+          <button pButton icon="pi pi-trash" class="p-button-text p-button-danger" (click)="removerModulo(modulo)"></button>
         </div>
       </div>
 
@@ -62,11 +50,8 @@
     </div>
 
     <div *ngIf="view === 'form'">
-      <app-cadastrar-modulo
-        [modulo]="moduloSelecionado"
-        (onSave)="salvarModulo($event)"
-        (onCancel)="cancelar()"
-      ></app-cadastrar-modulo>
+      <app-cadastrar-modulo [modulo]="moduloSelecionado" (onSave)="salvarModulo($event)"
+        (onCancel)="cancelar()"></app-cadastrar-modulo>
     </div>
   </div>
 </div>

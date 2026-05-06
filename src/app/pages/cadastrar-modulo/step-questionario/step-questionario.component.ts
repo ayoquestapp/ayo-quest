@@ -35,6 +35,9 @@ import { QuestaoAbertaComponent } from './lista-tipos-questoes/questao-aberta/qu
 export class StepQuestionarioComponent {
 
   @Input() form!: FormGroup;
+  @Output() finish = new EventEmitter<void>();
+  @Output() onPrev = new EventEmitter<void>();
+  @Output() onCancel = new EventEmitter<void>();
 
   constructor(private fb: FormBuilder) { }
 
@@ -46,10 +49,16 @@ export class StepQuestionarioComponent {
   addQuestao(event: any) {
     const questao = this.criarEstruturaQuestao(event.tipo);
     this.questoes.push(questao);
+    this.atualizarTotalQuestoes();
   }
 
   removerQuestao(index: number) {
     this.questoes.removeAt(index);
+    this.atualizarTotalQuestoes();
+  }
+
+  atualizarTotalQuestoes() {
+    this.form.get('totalQuestao')?.setValue(this.questoes.length);
   }
 
   criarEstruturaQuestao(tipo: string): FormGroup {
@@ -106,5 +115,13 @@ export class StepQuestionarioComponent {
       default:
         throw new Error('Tipo inválido');
     }
+  }
+
+  prevStep() {
+    this.onPrev.emit();
+  }
+
+  cancel() {
+    this.onCancel.emit();
   }
 }

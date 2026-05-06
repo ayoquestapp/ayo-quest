@@ -22,24 +22,11 @@
                 <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback"
                     let-index="index">
                     <app-step-questionario [form]="questionarioForm" (onNext)="nextCallback.emit()"
-                        (onPrev)="prevCallback.emit()" (onCancel)="cancelar()">
+                        (onPrev)="prevCallback.emit()" (onCancel)="cancelar()" (finish)="finalizar()">
                     </app-step-questionario>
                 </ng-template>
             </p-stepperPanel>
 
-            <p-stepperPanel header="Revisar">
-                <ng-template pTemplate="content" let-prevCallback="prevCallback" let-index="index">
-                    <div class="card">
-                        <h2>Revisar e Finalizar</h2>
-                        <div class="p-d-flex p-jc-between p-mt-4">
-                            <p-button label="Voltar" (onClick)="prevCallback.emit()" icon="pi pi-angle-left"
-                                styleClass="p-button-secondary p-button-text"></p-button>
-                            <p-button label="Finalizar" (onClick)="finalizar()" icon="pi pi-check"
-                                iconPos="right"></p-button>
-                        </div>
-                    </div>
-                </ng-template>
-            </p-stepperPanel>
         </p-stepper>
     </div>
 </div>

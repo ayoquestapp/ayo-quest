@@ -1,18 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PrimeNgModule } from '../../../../core/primeNgModule';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-config-quiz',
   standalone: true,
-  imports: [CommonModule, PrimeNgModule , FormsModule],
+  imports: [CommonModule, PrimeNgModule, FormsModule, ReactiveFormsModule],
   templateUrl: './config-quiz.component.html',
   styleUrl: './config-quiz.component.scss'
 })
 export class ConfigQuizComponent {
-
+  @Input() form!: FormGroup;
+  @Input() totalQuestao!: number;
   notaMinima: number = 70;
-  totalQuestoes: number = 1;
+
+
 
 }

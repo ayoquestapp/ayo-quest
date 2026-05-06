@@ -41,6 +41,11 @@ export interface Module {
 export interface ModuloPayload {
   nome: string;
   descricao: string;
+  xpAoConcluir: number;
+  cargaHoraria: number;
+  trilha: {
+    id: number;
+  };
   conteudos: Conteudo[];
   questoes: Questao[];
 }
@@ -116,8 +121,10 @@ export interface ConfigOption {
 }
 
 export interface Trilha {
-  name: string;
+  id: number;
+  nome: string;
   code: string;
+  modulos: any[]; // ou tipa depois se quiser
 }
 
 export type QuestionType =

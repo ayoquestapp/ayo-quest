@@ -40,7 +40,8 @@ export class CadastrarModuloComponent implements OnInit, OnChanges {
         nome: ['', Validators.required],
         descricao: [''],
         trilha: ['', [Validators.required]],
-        xpAoConcluir: ['', [Validators.required]]
+        xpAoConcluir: ['', [Validators.required]],
+        cargaHoraria: ['', [Validators.required]]
       }),
       conteudo: this.fb.group({
         videoAulaUrl: [''],
@@ -78,6 +79,8 @@ export class CadastrarModuloComponent implements OnInit, OnChanges {
   finalizar() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
+      console.log('Formulário inválido');
+      console.log('FORM COMPLETO:', this.form.getRawValue());
       return;
     }
 
@@ -100,10 +103,17 @@ export class CadastrarModuloComponent implements OnInit, OnChanges {
         titulo: 'Conteúdo acadêmico'
       });
     }
+    console.log('TRILHA FORM:', v.identificacao.trilha);
 
     const payload: ModuloPayload = {
       nome: v.identificacao.nome,
       descricao: v.identificacao.descricao,
+      xpAoConcluir: v.identificacao.xpAoConcluir,
+      cargaHoraria: v.identificacao.cargaHoraria,
+      trilha: {
+        id: v.identificacao.trilha
+      },
+
       conteudos: conteudos,
 
       questoes: v.questionario.questoes?.map((q: any) => ({
@@ -131,8 +141,8 @@ export class CadastrarModuloComponent implements OnInit, OnChanges {
         xpAoConcluir: modulo.xpAoConcluir || ''
       },
       questionario: {
-        notaMinima: modulo.notaMinima || 0,
-        totalQuestao: modulo.totalQuestao || 1
+        notaMinima: this.questionarioForm.get('notaMinima')?.value || 70,
+        totalQuestao: this.questionarioForm.get('totalQuestao')?.value || 1
       }
     });
 
