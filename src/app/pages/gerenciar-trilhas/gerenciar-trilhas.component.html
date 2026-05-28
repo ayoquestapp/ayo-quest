@@ -1,0 +1,85 @@
+<div class="gerenciar-trilha">
+  <div class="card">
+
+    <div class="header">
+      <h2></h2>
+
+      <button
+        pButton
+        label="Nova Trilha"
+        icon="pi pi-plus"
+        class="btn-novo"
+        (click)="novaTrilha()"
+        *ngIf="view === 'lista'">
+      </button>
+    </div>
+
+    <div *ngIf="view === 'lista'" class="lista-trilhas">
+
+      <div
+        class="trilha-card"
+        *ngFor="let trilha of trilhas">
+
+        <div class="icon">
+          <i class="pi pi-sitemap"></i>
+        </div>
+
+        <div class="conteudo">
+          <h3>{{ trilha.nome }}</h3>
+
+          <!-- <p>
+            {{ trilha.descricao || 'Sem descrição cadastrada' }}
+          </p> -->
+
+          <div class="meta">
+            <span>
+              <i class="pi pi-book"></i>
+              {{ trilha.quantidadeModulos || 0 }}
+              {{ (trilha.quantidadeModulos || 0) > 1 ? 'Módulos' : 'Módulo' }}
+            </span>
+
+            <!-- <span>
+              <i class="pi pi-star"></i>
+              {{ trilha.xpTotal || 0 }} XP
+            </span> -->
+          </div>
+        </div>
+
+        <div class="acoes">
+
+          <button
+            pButton
+            label="Editar"
+            icon="pi pi-pencil"
+            class="p-button-outlined"
+            (click)="editarTrilha(trilha)">
+          </button>
+
+          <button
+            pButton
+            icon="pi pi-trash"
+            class="p-button-text p-button-danger"
+            (click)="removerTrilha(trilha)">
+          </button>
+
+        </div>
+      </div>
+
+      <p *ngIf="trilhas.length === 0" class="empty">
+        Nenhuma trilha cadastrada
+      </p>
+
+    </div>
+
+    <div *ngIf="view === 'form'">
+
+      <app-cadastrar-trilha
+        [trilha]="trilhaSelecionada"
+        (onSave)="salvarTrilha($event)"
+        (onCancel)="cancelar()">
+      </app-cadastrar-trilha>
+
+    </div>
+
+  </div>
+</div>

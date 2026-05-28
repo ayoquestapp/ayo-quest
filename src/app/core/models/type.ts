@@ -124,7 +124,9 @@ export interface Trilha {
   id: number;
   nome: string;
   code: string;
-  modulos: any[]; // ou tipa depois se quiser
+  descricao: string;
+  quantidadeModulos?: number;
+  imagem?: string;
 }
 
 export type QuestionType =

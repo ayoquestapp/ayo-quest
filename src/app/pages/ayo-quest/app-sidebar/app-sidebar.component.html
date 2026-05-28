@@ -12,27 +12,23 @@
                     <span class="font-medium">Trilhas</span>
                 </a>
             </li>
-            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['favoritos']"> 
+
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/app/gerenciar-trilha']">
                 <a pRipple
                     class="item-sidabar">
-                    <i class="pi pi-bookmark mr-2"></i>
-                    <span class="font-medium">Favoritos</span>
+                    <i class="pi pi-sitemap mr-2"></i>
+                    <span class="font-medium">Gerenciar Trilhas</span>
                 </a>
             </li>
-            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['avisos']">
+
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/app/gerenciar-turma']"> 
                 <a pRipple
                     class="item-sidabar">
-                    <i class="pi pi-bell mr-2"></i>
-                    <span class="font-medium">Avisos</span>
+                    <i class="pi pi-graduation-cap mr-2"></i>
+                    <span class="font-medium">Gerenciar Turmas</span>
                 </a>
             </li>
-            <li>
-                <a pRipple
-                    class="item-sidabar">
-                    <i class="pi pi-comments mr-2"></i>
-                    <span class="font-medium">Serviço de atenção</span>
-                </a>
-            </li>
+
             <li routerLinkActive="active" [routerLink]="['/app/gerenciar-modulo']" [routerLinkActiveOptions]="{ exact: true }">
                 <a pRipple
                     class="item-sidabar">
@@ -40,6 +36,15 @@
                     <span class="font-medium">Gerenciar módulos</span>
                 </a>
             </li>
+            
+            <li>
+                <a pRipple
+                    class="item-sidabar">
+                    <i class="pi pi-comments mr-2"></i>
+                    <span class="font-medium">Serviço de atenção</span>
+                </a>
+            </li>
+
             <div class="footer-sidebar">
                 <li routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['minha-conta']">
                     <a pRipple

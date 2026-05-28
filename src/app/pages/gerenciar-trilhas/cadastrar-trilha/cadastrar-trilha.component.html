@@ -1,0 +1,117 @@
+<form [formGroup]="trilhaForm" class="form-trilha">
+
+  <div class="card-form">
+
+    <div class="titulo">
+
+      <h2>
+        {{ trilha
+        ? 'Editar Trilha'
+        : 'Nova Trilha' }}
+      </h2>
+
+      <p>
+        Preencha as informações da trilha
+      </p>
+
+    </div>
+
+    <div class="field">
+
+      <label for="nome">
+        Nome da Trilha
+      </label>
+
+      <input id="nome" type="text" pInputText formControlName="nome" placeholder="Ex: Angular Avançado">
+
+      <small class="erro" *ngIf="campoInvalido('nome')">
+
+        Nome obrigatório
+
+      </small>
+
+    </div>
+
+    <div class="field">
+
+      <label for="code">
+        Código da Trilha
+      </label>
+
+      <input id="code" type="text" pInputText formControlName="code" placeholder="Ex: ANGULAR">
+
+      <small class="erro" *ngIf="campoInvalido('code')">
+
+        Código obrigatório
+
+      </small>
+
+    </div>
+
+    <div class="field">
+
+      <label for="descricao">
+        Descrição
+      </label>
+
+      <textarea id="descricao" pInputTextarea rows="5" formControlName="descricao" placeholder="Descreva a trilha">
+      </textarea>
+
+      <small class="erro" *ngIf="campoInvalido('descricao')">
+
+        Descrição obrigatória
+
+      </small>
+
+    </div>
+
+    <div class="upload-banner">
+
+      <img *ngIf="previewImagem || trilha?.imagem" [src]="getSafeUrl((previewImagem || trilha?.imagem)!)"
+        class="preview-image" />
+
+      <div class="overlay">
+
+        <i class="pi pi-image" *ngIf="
+            !previewImagem &&
+            !trilha?.imagem
+          ">
+        </i>
+
+        <h3>
+
+          {{
+          previewImagem ||
+          trilha?.imagem
+          ? 'Alterar imagem'
+          : 'Adicionar imagem da trilha'
+          }}
+
+        </h3>
+
+        <p>
+          PNG, JPG ou WEBP
+        </p>
+
+        <p-fileUpload mode="basic" chooseLabel="Selecionar" chooseIcon="pi pi-upload" accept="image/*"
+          [multiple]="false" [maxFileSize]="1000000" [auto]="false" [customUpload]="true" styleClass="custom-upload"
+          (onSelect)="onImagemSelecionada($event)">
+        </p-fileUpload>
+
+      </div>
+
+    </div>
+
+    <div class="acoes">
+
+      <button pButton type="button" label="Cancelar" class="p-button-secondary" (click)="cancelar()">
+      </button>
+
+      <button pButton type="button" label="Salvar" icon="pi pi-check" (click)="salvar()">
+      </button>
+
+    </div>
+
+  </div>
+
+</form>

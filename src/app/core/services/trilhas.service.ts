@@ -2,20 +2,47 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Trilha } from '../models/type';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment.development';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrilhasService {
 
-  API = 'http://localhost:8080/trilhas';
+  private apiUrl = `http://localhost:8080/trilhas`;
 
+  constructor(
+    private http: HttpClient
+  ) {}
 
-  constructor(private http : HttpClient) { }
+  listar(): Observable<Trilha[]> {
 
-  listar() : Observable<Trilha []> {
-    return this.http.get<Trilha[]>(this.API + '/listar');
+    return this.http.get<Trilha[]>(
+      `${this.apiUrl}/listar`
+    );
   }
 
+  cadastrar(trilha: Trilha): Observable<Trilha> {
 
+    return this.http.post<Trilha>(
+      `${this.apiUrl}/cadastrar`,
+      trilha
+    );
+  }
+
+  atualizar(id: number, trilha: Trilha): Observable<Trilha> {
+
+    return this.http.put<Trilha>(
+      `${this.apiUrl}/atualizar/${id}`,
+      trilha
+    );
+  }
+
+  remover(id: number): Observable<void> {
+
+    return this.http.delete<void>(
+      `${this.apiUrl}/remover/${id}`
+    );
+  }
 }

@@ -20,6 +20,7 @@ const supabase = createClient(
 })
 
 export class SupabaseService {
+  client = supabase;
 
   async register(email: string, senha: string, nome: string,) {
     return await supabase.auth.signUp({

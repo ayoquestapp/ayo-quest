@@ -16,6 +16,7 @@ import { DataBaseComponent } from './pages/cursos/data-base/data-base.component'
 import { MinhaContaComponent } from './pages/minha-conta/minha-conta.component';
 import { CadastrarModuloComponent } from './pages/cadastrar-modulo/cadastrar-modulo.component';
 import { GerenciarModulosComponent } from './pages/gerenciar-modulos/gerenciar-modulos.component';
+import { GerenciarTrilhasComponent } from './pages/gerenciar-trilhas/gerenciar-trilhas.component';
 
 
 export const routes: Routes = [
@@ -99,6 +100,12 @@ export const routes: Routes = [
         path: 'gerenciar-modulo', component: GerenciarModulosComponent,
         data:{
           label: 'Gerenciar Módulos',
+        }
+      },
+      {
+        path: 'gerenciar-trilha', component: GerenciarTrilhasComponent,
+        data:{
+          label: 'Gerenciar Trilhas',
         }
       },
       { path: '', redirectTo: 'trilhas', pathMatch: 'full' }
