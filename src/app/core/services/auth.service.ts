@@ -12,7 +12,6 @@ export class AuthService {
   userRole = signal<string | null>(null);
 
   constructor(private supabaseService: SupabaseService) {
-    // 🔹 Inicializa o usuário do localStorage apenas no navegador
     if (typeof window !== 'undefined') {
       const storedUser = localStorage.getItem('user');
       if (storedUser) {

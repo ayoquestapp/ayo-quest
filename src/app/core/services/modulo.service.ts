@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ModuloService {
 
-  private API = 'http://localhost:8080/modulos';
+  private API = 'https://ayo-quest-api.fly.dev/modulos';
 
   constructor(private http: HttpClient) { }
 

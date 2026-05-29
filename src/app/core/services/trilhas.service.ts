@@ -10,7 +10,7 @@ import { environment } from '../../../environments/environment.development';
 })
 export class TrilhasService {
 
-  private apiUrl = `http://localhost:8080/trilhas`;
+  private apiUrl = `https://ayo-quest-api.fly.dev/trilhas`;
 
   constructor(
     private http: HttpClient
