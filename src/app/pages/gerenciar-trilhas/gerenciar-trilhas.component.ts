@@ -10,6 +10,9 @@ import { TrilhasService } from '../../core/services/trilhas.service';
 import { Trilha } from '../../core/models/type';
 import { CadastrarTrilhaComponent } from './cadastrar-trilha/cadastrar-trilha.component';
 import { ModuloService } from '../../core/services/modulo.service';
+import { LoadingService } from '../../core/services/loading.service';
+import { finalize } from 'rxjs';
+import { LoadingComponent } from '../../components/loading/loading.component';
 
 
 
@@ -23,7 +26,8 @@ import { ModuloService } from '../../core/services/modulo.service';
     PrimeNgModule,
     FormsModule,
     ReactiveFormsModule,
-    CadastrarTrilhaComponent
+    CadastrarTrilhaComponent,
+    LoadingComponent
   ],
   templateUrl: './gerenciar-trilhas.component.html',
   styleUrl: './gerenciar-trilhas.component.scss'
@@ -39,25 +43,47 @@ export class GerenciarTrilhasComponent implements OnInit {
 
   constructor(
     private trilhasService: TrilhasService,
-    
-  ) {}
+    public loadingService: LoadingService,
+
+  ) { }
 
   ngOnInit(): void {
     this.carregarTrilhas();
-    
+
   }
 
 
   carregarTrilhas() {
-    this.trilhasService.listar().subscribe({
-      next: (data) => {
-        this.trilhas = data;
-        console.log('TRILHAS:', this.trilhas);
-      },
-      error: (err) => {
-        console.error('Erro ao listar trilhas:', err);
-      }
-    });
+
+    this.loadingService.show();
+
+    this.trilhasService
+      .listar()
+      .pipe(
+        finalize(() => {
+          this.loadingService.hide();
+        })
+      )
+      .subscribe({
+
+        next: (data) => {
+
+          this.trilhas = data;
+
+          console.log(
+            'TRILHAS:',
+            this.trilhas
+          );
+        },
+
+        error: (err) => {
+
+          console.error(
+            'Erro ao listar trilhas:',
+            err
+          );
+        }
+      });
   }
 
   novaTrilha() {

@@ -13,8 +13,16 @@
         *ngIf="view === 'lista'">
       </button>
     </div>
+    
+    
+    <app-loading class="loading-container"
+    *ngIf="loadingService.loading$ | async">
 
-    <div *ngIf="view === 'lista'" class="lista-trilhas">
+    </app-loading>
+
+    <div
+      *ngIf="view === 'lista' && !(loadingService.loading$ | async)"
+      class="lista-trilhas">
 
       <div
         class="trilha-card"
@@ -27,21 +35,16 @@
         <div class="conteudo">
           <h3>{{ trilha.nome }}</h3>
 
-          <!-- <p>
-            {{ trilha.descricao || 'Sem descrição cadastrada' }}
-          </p> -->
-
           <div class="meta">
             <span>
               <i class="pi pi-book"></i>
-              {{ trilha.quantidadeModulos || 0 }}
-              {{ (trilha.quantidadeModulos || 0) > 1 ? 'Módulos' : 'Módulo' }}
-            </span>
 
-            <!-- <span>
-              <i class="pi pi-star"></i>
-              {{ trilha.xpTotal || 0 }} XP
-            </span> -->
+              {{ trilha.quantidadeModulos || 0 }}
+
+              {{ (trilha.quantidadeModulos || 0) > 1
+                ? 'Módulos'
+                : 'Módulo' }}
+            </span>
           </div>
         </div>
 
