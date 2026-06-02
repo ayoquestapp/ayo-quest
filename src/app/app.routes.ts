@@ -14,9 +14,10 @@ import { FrontEndComponent } from './pages/cursos/front-end/front-end.component'
 import { BackEndComponent } from './pages/cursos/back-end/back-end.component';
 import { DataBaseComponent } from './pages/cursos/data-base/data-base.component';
 import { MinhaContaComponent } from './pages/minha-conta/minha-conta.component';
-import { CadastrarModuloComponent } from './pages/cadastrar-modulo/cadastrar-modulo.component';
-import { GerenciarModulosComponent } from './pages/gerenciar-modulos/gerenciar-modulos.component';
+
 import { GerenciarTrilhasComponent } from './pages/gerenciar-trilhas/gerenciar-trilhas.component';
+import { GerenciarTurmasComponent } from './pages/gerenciar-turmas/gerenciar-turmas.component';
+import { GerenciarModulosComponent } from './pages/gerenciar-modulos/gerenciar-modulos.component';
 
 
 export const routes: Routes = [
@@ -106,6 +107,12 @@ export const routes: Routes = [
         path: 'gerenciar-trilha', component: GerenciarTrilhasComponent,
         data:{
           label: 'Gerenciar Trilhas',
+        }
+      },
+      {
+        path: 'gerenciar-turmas', component: GerenciarTurmasComponent,
+        data:{
+          label: 'Gerenciar Turmas',
         }
       },
       { path: '', redirectTo: 'trilhas', pathMatch: 'full' }

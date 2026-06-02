@@ -1,6 +1,16 @@
 <p-tabView styleClass="custom-tabview">
     <p-tabPanel>
         <ng-template pTemplate="header">
+            <i class="pi pi-align-left"></i>
+            <span>Status</span>
+        </ng-template>
+        <div class="form-container">
+            <app-card-dados-usuario></app-card-dados-usuario>
+        </div>
+    </p-tabPanel>
+
+    <p-tabPanel>
+        <ng-template pTemplate="header">
             <i class="pi pi-user"></i>
             <span>Perfil</span>
         </ng-template>

@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { PrimeNgModule } from '../../core/primeNgModule';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CadastrarModuloComponent } from '../cadastrar-modulo/cadastrar-modulo.component';
 import { ModuloService } from '../../core/services/modulo.service';
+import { CadastrarModuloComponent } from './cadastrar-modulo/cadastrar-modulo.component';
 
 @Component({
   selector: 'app-gerenciar-modulos',
@@ -13,6 +13,10 @@ import { ModuloService } from '../../core/services/modulo.service';
   styleUrl: './gerenciar-modulos.component.scss'
 })
 export class GerenciarModulosComponent implements OnInit {
+
+  view: 'lista' | 'form' = 'lista';
+  modulos: any[] = [];
+  moduloSelecionado: any = null;
 
   constructor(private moduloService: ModuloService) {
 
@@ -33,11 +37,6 @@ export class GerenciarModulosComponent implements OnInit {
       }
     });
   }
-
-  view: 'lista' | 'form' = 'lista';
-
-  modulos: any[] = [];
-  moduloSelecionado: any = null;
 
   novoModulo() {
     this.moduloSelecionado = null;

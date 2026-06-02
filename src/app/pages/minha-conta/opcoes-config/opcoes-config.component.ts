@@ -6,11 +6,12 @@ import { OpcoesConquistasComponent } from "./opcoes-conquistas/opcoes-conquistas
 import { OpcoesFavoritosComponent } from "./opcoes-favoritos/opcoes-favoritos.component";
 import { OpcoesNotificacoesComponent } from "./opcoes-notificacoes/opcoes-notificacoes.component";
 import { OpcoesPreferenciasComponent } from "./opcoes-preferencias/opcoes-preferencias.component";
+import { CardDadosUsuarioComponent } from "../card-dados-usuario/card-dados-usuario.component";
 
 @Component({
   selector: 'app-opcoes-config',
   standalone: true,
-  imports: [CommonModule, PrimeNgModule, OpcoesPerfilComponent, OpcoesConquistasComponent, OpcoesFavoritosComponent, OpcoesNotificacoesComponent, OpcoesPreferenciasComponent],
+  imports: [CommonModule, PrimeNgModule, OpcoesPerfilComponent, OpcoesConquistasComponent, OpcoesFavoritosComponent, OpcoesNotificacoesComponent, OpcoesPreferenciasComponent, CardDadosUsuarioComponent],
   encapsulation: ViewEncapsulation.None,
   templateUrl: './opcoes-config.component.html',
   styleUrl: './opcoes-config.component.scss'

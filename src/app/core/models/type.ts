@@ -178,3 +178,14 @@ export interface QuestionTypeConfig {
   icon: string;
   color?: string;
 }
+
+export interface Turma {
+  id: number;
+  nome: string;
+  code: string;
+  descricao: string;
+  quantidadeAlunos?: number;
+  periodo?: string;
+  responsavel?: string;
+  status?: string;
+}

@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Trilha } from '../models/type';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
+
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import { environment } from '../../../environments/environment.development';
 })
 export class TrilhasService {
 
-  private apiUrl = `https://ayo-quest-api.fly.dev/trilhas`;
+  private apiUrl = `${environment.apiUrl}/trilhas`;
 
   constructor(
     private http: HttpClient
