@@ -1,0 +1,19 @@
+<div class="card" [formGroup]="form">
+  <div class="card-header">
+    <div class="text-container">
+      <h2>Configuração do quiz</h2>
+      <p>Defina a nota mínima para concluir o módulo.</p>
+    </div>
+  </div>
+
+  <div class="fields-container">
+    <div class="p-field">
+      <label>Nota mínima (%)</label>
+      <input type="number" formControlName="notaMinima" pInputText min="0" max="100" placeholder="70" />
+    </div>
+    <div class="p-field">
+      <label>Total de questões</label>
+      <input type="number" formControlName="totalQuestao" pInputText readonly/>
+    </div>
+  </div>
+</div>

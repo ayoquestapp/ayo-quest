@@ -1,0 +1,74 @@
+<div class="quiz-container">
+  <form [formGroup]="form">
+    <div class="question-card">
+      <p-accordion>
+        <p-accordionTab [selected]="true">
+
+          <ng-template pTemplate="header">
+            <div class="header-content">
+              <div class="header-left">
+                <span class="number-circle">{{ (index !== undefined) ? index + 1 : 1 }}</span>
+                <div class="type-tag">
+                  <i class="pi pi-circle-fill"></i>
+                  MÚLTIPLA ESCOLHA
+                </div>
+              </div>
+
+              <div class="header-right">
+                <i class="pi pi-trash icon-btn" (click)="removeQuestion()"></i>
+              </div>
+            </div>
+          </ng-template>
+
+          <div class="content-body">
+
+            <div class="input-group">
+              <label>Enunciado</label>
+              <textarea pInputTextarea formControlName="enunciado" rows="3" class="full-width-input"
+                placeholder="Digite a pergunta..."></textarea>
+            </div>
+
+
+            <div formArrayName="alternativas" class="options-container">
+              <div *ngFor="let alt of alternativas.controls; let i = index" [formGroupName]="i" class="option-row">
+
+                <div class="option-content">
+
+                  <p-radioButton [name]="'question_' + index" [value]="i" [formControl]="$any(form.get('correta'))">
+                  </p-radioButton>
+
+                  <input pInputText formControlName="texto" [placeholder]="'Opção ' + (i + 1)" class="option-input">
+
+                  <div class="correta-badge"
+                    [style.visibility]="form.get('correta')?.value === i ? 'visible' : 'hidden'">
+                    <span>CORRETA</span>
+                    <i class="pi pi-check-circle"></i>
+                  </div>
+
+                  <i (click)="removeAlternativa(i)" class="pi pi-trash cursor-pointer text-secondary">
+                  </i>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="add-option-row">
+              <span (click)="addAlternativa()" class="text-teal cursor-pointer">
+                <i class="pi pi-plus"></i> Adicionar opção
+              </span>
+            </div>
+
+            <div class="footer-row">
+              <div class="xp-badge">
+                <i class="pi pi-bolt"></i>
+                <span>XP</span>
+                <input type="number" formControlName="xp" class="xp-input">
+              </div>
+            </div>
+          </div>
+
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+  </form>
+</div>

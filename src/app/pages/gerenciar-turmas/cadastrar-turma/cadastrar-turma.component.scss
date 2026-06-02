@@ -1,0 +1,201 @@
+.p-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+
+    label {
+        font-weight: 600;
+        color: #fff;
+        font-size: 0.95rem;
+    }
+}
+
+.p-formgrid {
+    display: flex;
+    gap: 1.5rem;
+
+    >div {
+        flex: 1;
+    }
+}
+
+.p-inputtext,
+.p-inputnumber-input {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    height: 45px;
+    transition: border-color 0.2s;
+
+    &:enabled:focus,
+    &:enabled:hover {
+        border-color: #5fa8e0;
+        box-shadow: none;
+    }
+
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+    }
+}
+
+.p-dropdown {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 45px;
+    display: flex;
+    align-items: center;
+
+    .p-dropdown-label {
+        padding: 0 1rem;
+        color: #fff;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
+
+    .p-dropdown-trigger {
+        color: rgba(255, 255, 255, 0.6);
+        width: 3rem;
+    }
+
+    &:enabled:focus,
+    &:enabled:hover {
+        border-color: #5fa8e0;
+        box-shadow: none;
+    }
+}
+
+.acoes {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+::ng-deep .btn-cancelar {
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    width: 100px;
+    height: 40px;
+    border-radius: 12px;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.3);
+        color: #fff;
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+::ng-deep .btn-salvar {
+    background: linear-gradient(135deg, #3b82f6, #5fa8e0);
+    border: none;
+    color: #fff;
+    width: 100px;
+    height: 40px;
+    border-radius: 12px;
+
+    &:hover {
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        transform: translateY(-1px);
+    }
+
+    &:active {
+        transform: scale(0.98);
+        box-shadow: none;
+    }
+}
+
+.info-block {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed rgba(95, 168, 224, 0.3);
+    border-radius: 12px;
+    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.tag {
+    background: rgba(16, 89, 185, 0.15);
+    color: #6ED0FF;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &::before {
+        content: '</>';
+        font-family: monospace;
+    }
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+    max-height: 300px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.75rem;
+
+}
+
+
+::ng-deep .custom-upload .p-button {
+    border-radius: 12px;
+    padding: 0.8rem 1.4rem;
+    background: #6366f1;
+    border: none;
+
+    font-weight: 600;
+}
+
+::ng-deep .custom-upload .p-button:hover {
+    background: #4f46e5;
+}
+
+.upload-banner {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+}

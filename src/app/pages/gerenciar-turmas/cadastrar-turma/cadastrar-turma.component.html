@@ -1,0 +1,82 @@
+<form [formGroup]="turmaForm" class="form-turma">
+
+  <div class="card-form">
+
+    <div class="titulo">
+
+      <h2>
+        {{ turma
+        ? 'Editar Turma'
+        : 'Nova Turma' }}
+      </h2>
+
+      <p>
+        Preencha as informações da turma
+      </p>
+
+    </div>
+
+    <div class="field">
+
+      <label for="nome">
+        Nome da Turma
+      </label>
+
+      <input id="nome" type="text" pInputText formControlName="nome" placeholder="Ex: Angular Avançado">
+
+      <small class="erro" *ngIf="campoInvalido('nome')">
+
+        Nome obrigatório
+
+      </small>
+
+    </div>
+
+    <div class="field">
+
+      <label for="code">
+        Código da Turma
+      </label>
+
+      <input id="code" type="text" pInputText formControlName="code" placeholder="Ex: ANGULAR">
+
+      <small class="erro" *ngIf="campoInvalido('code')">
+
+        Código obrigatório
+
+      </small>
+
+    </div>
+
+    <div class="field">
+
+      <label for="descricao">
+        Descrição
+      </label>
+
+      <textarea id="descricao" pInputTextarea rows="5" formControlName="descricao" placeholder="Descreva a trilha">
+      </textarea>
+
+      <small class="erro" *ngIf="campoInvalido('descricao')">
+
+        Descrição obrigatória
+
+      </small>
+
+    </div>
+
+    <div class="acoes">
+
+      <button pButton type="button" class="btn-cancelar" (click)="cancelar()">
+        Cancelar
+      </button>
+
+      <button pButton type="button" class="btn-salvar" (click)="salvar()">
+        Salvar
+      </button>
+
+    </div>
+
+  </div>
+
+</form>

@@ -1,0 +1,56 @@
+<div class="gerenciar-turmas">
+    <div class="card">
+        <div class="header">
+            <h2></h2>
+            <button pButton label="Nova Turma" icon="pi pi-plus" class="btn-novo" (click)="novaTurma()"
+                *ngIf="view === 'lista'">
+            </button>
+        </div>
+
+        <app-loading class="loading-container" *ngIf="loadingService.loading$ | async">
+
+        </app-loading>
+
+        <div class="lista-turmas">
+
+            <div class="turma-card" *ngFor="let turma of turmas">
+                <div class="icon">
+                    <i class="pi pi-pi-graduation-cap"></i>
+                </div>
+
+                <div class="conteudo">
+                    <h3>{{ turma.nome }}</h3>
+
+                    <div class="meta">
+                        <span>
+                            <i class="pi pi-book"></i>
+                            {{ turma.quantidadeAlunos || 0 }}
+                        </span>
+                    </div>
+                </div>
+                <div class="acoes">
+                    <button pButton label="Editar" icon="pi pi-pencil" class="p-button-outlined"
+                        (click)="editarTurma(turma)">
+                    </button>
+
+                    <button pButton icon="pi pi-trash" class="p-button-text p-button-danger"
+                        (click)="excluirTurma(turma)">
+                    </button>
+                </div>
+
+                <p *ngIf="turmas.length === 0" class="empty">
+                    Nenhuma turma cadastrada
+                </p>
+
+            </div>
+
+            <div *ngIf="view === 'form'">
+
+                <app-cadastrar-turma [turma]="turmaSelecionada" (onSave)="salvarTurma($event)"
+                    (onCancel)="cancelar()">
+                </app-cadastrar-turma>
+
+            </div>
+
+        </div>
+    </div>
