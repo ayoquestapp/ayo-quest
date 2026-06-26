@@ -1,0 +1,63 @@
+<div class="card" [formGroup]="form">
+
+    <div class="card-header">
+        <div class="top-line">
+            <h2>Dados básicos da turma</h2>
+        </div>
+    </div>
+
+    <p>
+        Essas informações serão utilizadas para identificar e organizar a turma.
+    </p>
+
+    <div class="p-field">
+        <label>Nome da turma</label>
+
+        <input
+            pInputText
+            formControlName="txNomeTurma">
+    </div>
+
+    <div class="p-field">
+        <label>Código da turma</label>
+
+        <input
+            pInputText
+            formControlName="codTurma">
+    </div>
+
+    <div class="p-field">
+        <label>Descrição</label>
+
+        <textarea
+            pInputTextarea
+            formControlName="descricao">
+        </textarea>
+    </div>
+
+    <div class="info-block">
+        <div class="tag">TURMA</div>
+
+        <span>
+            O código da turma poderá ser utilizado para identificação rápida pelos administradores.
+        </span>
+    </div>
+
+    <div class="p-d-flex p-jc-between p-mt-4">
+
+        <p-button
+            label="Cancelar"
+            (onClick)="cancelar()"
+            styleClass="p-button-secondary p-button-text">
+        </p-button>
+
+        <p-button
+            label="Próximo"
+            icon="pi pi-angle-right"
+            iconPos="right"
+            (onClick)="nextStep()">
+        </p-button>
+
+    </div>
+
+</div>

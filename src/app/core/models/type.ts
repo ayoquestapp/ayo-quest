@@ -127,6 +127,7 @@ export interface Trilha {
   descricao: string;
   quantidadeModulos?: number;
   imagem?: string;
+  
 }
 
 export type QuestionType =
@@ -180,12 +181,35 @@ export interface QuestionTypeConfig {
 }
 
 export interface Turma {
-  id: number;
-  nome: string;
-  code: string;
+  id?: number;
+  txNomeTurma: string;
+  codTurma: string;
   descricao: string;
   quantidadeAlunos?: number;
   periodo?: string;
-  responsavel?: string;
-  status?: string;
+  responsavelId?: string;
+  trilhasIds: number[];
+  stTurma?: string;
+  createdAt?: string;
+  createdBy?: string;
+  updatedAt?: string;
+}
+
+
+export interface Profile {
+
+    id: string;
+
+    email: string;
+
+    name: string;
+
+    role: 'ADMIN' | 'TUTOR' | 'STUDENT';
+
+    xp: number;
+
+    level: number;
+
+    avatarUrl?: string;
+
 }

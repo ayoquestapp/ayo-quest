@@ -1,58 +1,73 @@
 import { Injectable, signal } from '@angular/core';
 
 import { SupabaseService } from './supabase.service';
-import { User } from '../models/type';
+import { Profile, User } from '../models/type';
+import { UserService } from './user.service';
+import { firstValueFrom } from 'rxjs';
 
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class AuthService {
-  currentUser = signal<User | null>(null);
-  userRole = signal<string | null>(null);
+  private ready = false;
+  currentProfile = signal<Profile | null>(null);
 
-  constructor(private supabaseService: SupabaseService) {
+  constructor(
+    private supabaseService: SupabaseService,
+    private userService: UserService
+  ) {
     if (typeof window !== 'undefined') {
-      const storedUser = localStorage.getItem('user');
-      if (storedUser) {
-        const user = JSON.parse(storedUser);
-        this.currentUser.set(user);
-        this.userRole.set(user.role);
+      const stored = localStorage.getItem('profile');
+
+      if (stored) {
+        this.currentProfile.set(JSON.parse(stored));
       }
     }
   }
 
-  setUser(user: any) {
-    this.currentUser.set(user);
-    this.userRole.set(user.role);
-
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('user', JSON.stringify(user));
-    }
+  isReady() {
+    return this.ready;
   }
 
-  async isLoggedIn(): Promise<boolean> {
+  async initAuth() {
     const { data } = await this.supabaseService.getSession();
 
-    if (data.session) {
-      this.currentUser.set(data.session.user as unknown as User);
-      if (typeof window !== 'undefined') {
-        this.userRole.set((data.session.user as any).role);
-      }
-      return true;
+    if (!data.session) {
+      return;
     }
 
-    return false;
   }
 
-  async load() {
-    const { data } = await this.supabaseService.getSession();
+  async loadProfile() {
+    const profile = await firstValueFrom(
+      this.userService.getMyProfile()
+    );
 
-    if (data.session) {
-      this.currentUser.set(data.session.user as unknown as User);
-      if (typeof window !== 'undefined') {
-        this.userRole.set((data.session.user as any).role);
-      }
+    this.setProfile(profile);
+  }
+
+  setProfile(profile: Profile) {
+    this.currentProfile.set(profile);
+
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('profile', JSON.stringify(profile));
     }
+  }
+
+  logout() {
+    this.currentProfile.set(null);
+    localStorage.removeItem('profile');
+    return this.supabaseService.logout();
+  }
+
+  isAdmin() {
+    return this.currentProfile()?.role === 'ADMIN';
+  }
+
+  isTutor() {
+    return this.currentProfile()?.role === 'TUTOR';
+  }
+
+  isStudent() {
+    return this.currentProfile()?.role === 'STUDENT';
   }
 }

@@ -1,15 +1,20 @@
-import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
+import { inject } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
 export const isLoggedIn: CanActivateFn = async () => {
-  const authService = inject(AuthService);
+
+  const auth = inject(AuthService);
   const router = inject(Router);
 
-  const loggedIn = await authService.isLoggedIn();
+  const profile = auth.currentProfile();
 
-  if (loggedIn) {
-    router.navigate(['/home']);
+  if (!profile) {
+    await auth.initAuth();
+  }
+
+  if (auth.currentProfile()) {
+    router.navigate(['/app']);
     return false;
   }
 

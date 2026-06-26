@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { Router, RouterLink } from '@angular/router';
 import { NotificationService } from '../../core/services/notification.service';
 import { SupabaseService } from '../../core/services/supabase.service';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private supabaseService: SupabaseService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
 
   ) {
     this.loginForm = this.formBuilder.group({
@@ -47,7 +49,8 @@ export class LoginComponent {
       return;
     }
 
-    this.notificationService.success('Login realizado com sucesso!', 'Bem-vindo!');
+    this.notificationService.success('Login Realizado com sucesso.', 'SUCESSO')
+    await this.authService.loadProfile();
 
     this.router.navigate(['/app']);
 

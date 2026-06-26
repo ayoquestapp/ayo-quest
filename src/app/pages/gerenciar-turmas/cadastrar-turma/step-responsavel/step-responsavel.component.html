@@ -1,0 +1,44 @@
+<div class="card" [formGroup]="form">
+
+    <div class="card-header">
+        <div class="top-line">
+            <h2>Responsável pela turma</h2>
+        </div>
+    </div>
+
+    <p>
+        Selecione o usuário responsável pelo acompanhamento da turma.
+    </p>
+
+    <div class="p-field">
+        <label>Responsável</label>
+
+        <p-dropdown [options]="usuarios" optionLabel="nome" optionValue="id" formControlName="responsavel" placeholder="Selecione um responsável">
+        </p-dropdown>
+    </div>
+
+    <div class="card flex justify-center">
+        <p-multiSelect [options]="trilhas" formControlName="trilhas" optionLabel="nome" optionValue="id" display="chip" placeholder="Selecione as trilhas">
+        </p-multiSelect>
+    </div>
+
+    <div class="info-block">
+        <div class="tag">RESP</div>
+
+        <span>
+            O responsável poderá acompanhar o progresso dos alunos e gerenciar a turma.
+        </span>
+    </div>
+
+    <div class="p-d-flex p-jc-between p-mt-4">
+
+        <p-button label="Voltar" icon="pi pi-angle-left" (onClick)="voltar()"
+            styleClass="p-button-secondary p-button-text">
+        </p-button>
+
+        <p-button label="Finalizar" icon="pi pi-check" (onClick)="finalizar()">
+        </p-button>
+
+    </div>
+
+</div>

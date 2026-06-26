@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TurmasService {
 
-  API_URL = `${environment.apiUrl}/turmas `;
+  API_URL = `${environment.apiUrl}/turmas`;
 
   constructor(private http: HttpClient) { 
 

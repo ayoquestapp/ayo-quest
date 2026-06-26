@@ -1,0 +1,297 @@
+/* Reset global para elementos internos do PrimeNG que costumam vazar */
+:host ::ng-deep {
+    
+    /* Multiselect Container */
+    .p-multiselect {
+        width: 100%;
+        min-height: 45px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(95, 168, 224, 0.2);
+        color: #fff;
+        transition: all 0.2s ease;
+
+        &:hover {
+            border-color: rgba(110, 208, 255, 0.6);
+        }
+
+        &.p-focus {
+            border-color: #6ed0ff;
+            box-shadow: 0 0 0 2px rgba(110, 208, 255, 0.25);
+        }
+
+        .p-multiselect-label {
+            padding: 0.6rem 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            color: #fff !important;
+
+            &.p-placeholder {
+                color: rgba(255, 255, 255, 0.5) !important;
+            }
+        }
+
+        .p-multiselect-trigger {
+            color: #6ed0ff;
+            width: 3rem;
+        }
+
+        /* Chips */
+        .p-multiselect-token {
+            background: rgba(110, 208, 255, 0.15);
+            color: #6ed0ff;
+            border-radius: 8px;
+            padding: 0.2rem 0.6rem;
+            margin: 0.1rem;
+            font-size: 0.85rem;
+            border: 1px solid rgba(110, 208, 255, 0.2);
+
+            .p-multiselect-token-icon {
+                margin-left: 0.5rem;
+                font-size: 0.75rem;
+                color: #6ed0ff;
+            }
+        }
+    }
+
+    /* Painel Dropdown (Overlay) */
+    .p-multiselect-panel {
+        background: #0b2142 !important;
+        border: 1px solid rgba(95, 168, 224, 0.3) !important;
+        border-radius: 12px !important;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5) !important;
+        margin-top: 5px !important;
+
+        .p-multiselect-header {
+            background: rgba(255, 255, 255, 0.03) !important;
+            padding: 0.75rem 1rem !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            .p-checkbox {
+                margin-right: 0;
+            }
+
+           
+            .p-multiselect-filter-container {
+                flex: 1;
+                
+                .p-inputtext {
+                    background: rgba(255, 255, 255, 0.05) !important;
+                    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                    color: #fff !important;
+                    border-radius: 8px !important;
+                    padding: 0.5rem 0.75rem 0.5rem 2.5rem !important;
+                    width: 100%;
+
+                    &:focus {
+                        border-color: #6ed0ff !important;
+                    }
+                }
+
+                .p-multiselect-filter-icon {
+                    left: 0.75rem;
+                    color: rgba(255, 255, 255, 0.4);
+                }
+            }
+
+            .p-multiselect-close {
+                align-self: center;
+                color: #6ed0ff !important;
+                width: 2rem;
+                height: 2rem;
+                border-radius: 50%;
+                border: 1px solid rgba(110, 208, 255, 0.2);
+                transition: all 0.2s;
+                cursor: pointer;
+                &:hover {
+                    background: rgba(110, 208, 255, 0.1);
+                }
+            }
+        }
+
+        /* Lista de Itens */
+        .p-multiselect-items-wrapper {
+            padding: 0.5rem 0 !important;
+            max-height: 250px !important;
+
+            .p-multiselect-item {
+                padding: 0.6rem 1rem !important;
+                color: rgba(255, 255, 255, 0.9) !important;
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+                transition: all 0.2s;
+                background: transparent !important;
+
+                &:hover {
+                    background: rgba(110, 208, 255, 0.08) !important;
+                    color: #fff !important;
+                }
+
+                &.p-highlight {
+                    background: rgba(110, 208, 255, 0.15) !important;
+                    color: #6ed0ff !important;
+                }
+
+                .p-checkbox {
+                    .p-checkbox-box {
+                        border-color: rgba(110, 208, 255, 0.5) !important;
+                        background: transparent !important;
+                        border-radius: 4px;
+
+                        &.p-highlight {
+                            background: #6ed0ff !important;
+                            border-color: #6ed0ff !important;
+
+                            .p-checkbox-icon {
+                                color: #071f35 !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .p-dropdown {
+        width: 100%;
+        min-height: 45px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(95, 168, 224, 0.2);
+        color: #fff;
+
+        .p-dropdown-label {
+            padding: 0.6rem 0.75rem;
+            color: #fff !important;
+
+            &.p-placeholder {
+                color: rgba(255, 255, 255, 0.5) !important;
+            }
+        }
+
+        .p-dropdown-trigger {
+            color: #6ed0ff;
+        }
+
+        &:hover {
+            border-color: rgba(110, 208, 255, 0.6);
+        }
+    }
+
+    .p-dropdown-panel {
+        background: #0b2142 !important;
+        border: 1px solid rgba(95, 168, 224, 0.3) !important;
+        border-radius: 12px !important;
+        
+        .p-dropdown-item {
+            color: rgba(255, 255, 255, 0.9) !important;
+            padding: 0.6rem 1rem !important;
+
+            &:hover {
+                background: rgba(110, 208, 255, 0.08) !important;
+            }
+
+            &.p-highlight {
+                background: rgba(110, 208, 255, 0.15) !important;
+                color: #6ed0ff !important;
+            }
+        }
+    }
+
+    .p-hidden-accessible {
+        display: none !important;
+    }
+}
+
+
+.card {
+    background: linear-gradient(180deg, #071f35 0%, #0b2142 100%);
+    border: 1px solid rgba(95, 168, 224, 0.12);
+    border-radius: 18px;
+    padding: 2rem;
+    color: #fff;
+    min-height: 250px;
+}
+
+.card-header h2 {
+    color: #fff;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2rem;
+}
+
+.p-field {
+    margin-bottom: 1.5rem;
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 500;
+    }
+}
+
+.info-block {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(110, 208, 255, 0.08);
+    border: 1px solid rgba(110, 208, 255, 0.2);
+    padding: 1rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+
+    .tag {
+        background: #6ED0FF;
+        color: #071f35;
+        padding: 0.2rem 0.6rem;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 0.8rem;
+    }
+
+    span {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+.p-d-flex {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
+
+:host ::ng-deep .p-button {
+    border-radius: 10px;
+    padding: 0.75rem 2rem;
+    
+    &.p-button-secondary {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        
+        &:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+    }
+
+    &:not(.p-button-secondary) {
+        background: #6ED0FF;
+        border: none;
+        color: #071f35;
+
+        &:hover {
+            background: #4AB8E0;
+        }
+    }
+}

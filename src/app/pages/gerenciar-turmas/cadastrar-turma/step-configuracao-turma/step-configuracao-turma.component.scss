@@ -1,0 +1,204 @@
+.invite-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 18px;
+    background: linear-gradient(180deg, #071f35 0%, #0b2142 100%);
+    border: 1px solid rgba(95, 168, 224, 0.12);
+    color: #fff;
+}
+
+.email-input {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+
+    input {
+        flex: 1;
+        height: 42px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #fff;
+        padding: 0 1rem;
+        transition: all 0.3s ease-in-out;
+
+        &:focus {
+            outline: none;
+            border-color: #6ED0FF;
+            box-shadow: 0 0 0 0.2rem rgba(110, 208, 255, 0.25);
+        }
+
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+    }
+
+    button {
+        height: 42px;
+        width: 42px;
+        border-radius: 10px;
+        background-color: #6ED0FF;
+        border: none;
+        color: #071f35;
+        font-size: 1.2rem;
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover {
+            background-color: #4AB8E0;
+        }
+
+        &:disabled {
+            background-color: rgba(110, 208, 255, 0.3);
+            cursor: not-allowed;
+        }
+    }
+}
+
+.counter {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+
+    strong {
+        color: #6ED0FF;
+    }
+}
+
+:host ::ng-deep .invite-table {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+:host ::ng-deep .invite-table .p-datatable-thead > tr > th {
+    background: rgba(255, 255, 255, 0.05);
+    color: #6ED0FF;
+    font-weight: 600;
+    border: none;
+    padding: 1rem;
+}
+
+:host ::ng-deep .invite-table .p-datatable-tbody > tr {
+    background: transparent;
+    color: #fff;
+    transition: 0.2s;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.08);
+    }
+}
+
+:host ::ng-deep .invite-table .p-datatable-tbody > tr > td {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0.8rem 1rem;
+}
+
+:host ::ng-deep .p-paginator {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: #fff;
+    padding: 0.8rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+
+    .p-paginator-rpp-options {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+
+        &:hover {
+            border-color: #6ED0FF;
+        }
+    }
+
+    .p-dropdown-trigger {
+        color: #fff;
+    }
+
+    .p-paginator-pages .p-paginator-page {
+        background-color: transparent;
+        color: rgba(255, 255, 255, 0.7);
+        border-radius: 50%;
+        margin: 0 0.2rem;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #6ED0FF;
+        }
+
+        &.p-highlight {
+            background-color: #6ED0FF;
+            color: #071f35;
+        }
+    }
+
+    .p-paginator-first, .p-paginator-prev, .p-paginator-next, .p-paginator-last {
+        color: #6ED0FF; /* Alterado para azul */
+        border-radius: 50%;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background-color: rgba(110, 208, 255, 0.1);
+            color: #6ED0FF;
+        }
+    }
+
+    .p-paginator-current {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .p-paginator-left-content .p-button, .p-paginator-right-content .p-button {
+        color: #6ED0FF; /* Botões de refresh e cloud */
+        &:hover {
+            background-color: rgba(110, 208, 255, 0.1);
+        }
+    }
+}
+
+:host ::ng-deep .p-button.p-button-danger {
+    color: #6ED0FF; /* Alterado de vermelho para azul */
+
+    &:hover {
+        background-color: rgba(110, 208, 255, 0.1);
+    }
+}
+
+.email-badge {
+    background: rgba(110, 208, 255, 0.12);
+    color: #6ED0FF;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+label {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.5rem;
+    display: block;
+    font-size: 0.9rem;
+}
+
+:host .bt-trash { 
+    font-size: 1rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        color: #bd210c;
+        font-weight: bold;
+    }
+}
+
+:host ::ng-deep p-paginator-bottom p-paginator p-component ng-star-inserted {
+    gap: 15px;
+}

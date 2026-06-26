@@ -18,6 +18,7 @@ import { MinhaContaComponent } from './pages/minha-conta/minha-conta.component';
 import { GerenciarTrilhasComponent } from './pages/gerenciar-trilhas/gerenciar-trilhas.component';
 import { GerenciarTurmasComponent } from './pages/gerenciar-turmas/gerenciar-turmas.component';
 import { GerenciarModulosComponent } from './pages/gerenciar-modulos/gerenciar-modulos.component';
+import { roleGuard } from './core/guards/role-guards';
 
 
 export const routes: Routes = [
@@ -111,8 +112,10 @@ export const routes: Routes = [
       },
       {
         path: 'gerenciar-turmas', component: GerenciarTurmasComponent,
+        canActivate: [roleGuard],
         data:{
           label: 'Gerenciar Turmas',
+          roles: ['ADMIN', 'TUTOR']
         }
       },
       { path: '', redirectTo: 'trilhas', pathMatch: 'full' }

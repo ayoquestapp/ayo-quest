@@ -18,6 +18,7 @@ export class GerenciarTurmasComponent implements OnInit {
   view: 'lista' | 'form' = 'lista';
   turmas: any[] = [];
   turmaSelecionada: any = null;
+  activeStep: number = 0;
 
   constructor(
     public loadingService: LoadingService,
@@ -32,6 +33,7 @@ export class GerenciarTurmasComponent implements OnInit {
 
   public novaTurma () {
     this.turmaSelecionada = null;
+    this.activeStep = 0;
     this.view = 'form';
   }
 

@@ -3,6 +3,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { SupabaseService } from '../../../core/services/supabase.service';
 import { CommonModule } from '@angular/common';
 import { PrimeNgModule } from '../../../core/primeNgModule';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-app-sidebar',
@@ -14,13 +15,14 @@ import { PrimeNgModule } from '../../../core/primeNgModule';
 export class AppSidebarComponent {
   constructor(
     private supabaseService: SupabaseService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
 
   }
 
-  logout() {
-    this.supabaseService.logout();
+  async logout() {
+    await this.authService.logout();
     this.router.navigate(['/login']);
   }
 }

@@ -1,82 +1,42 @@
-<form [formGroup]="turmaForm" class="form-turma">
+<p-stepper [activeStep]="activeStep" (activeStepChange)="activeStep = $event">
 
-  <div class="card-form">
+    <p-stepperPanel header="Dados Básicos">
+        <ng-template pTemplate="content" let-nextCallback="nextCallback">
+            <app-step-dados-basicos
+                [form]="dadosBasicosForm"
+                (onNext)="nextCallback.emit()">
+            </app-step-dados-basicos>
+        </ng-template>
+    </p-stepperPanel>
 
-    <div class="titulo">
+    <p-stepperPanel header="Configurações">
+        <ng-template
+            pTemplate="content"
+            let-prevCallback="prevCallback"
+            let-nextCallback="nextCallback">
 
-      <h2>
-        {{ turma
-        ? 'Editar Turma'
-        : 'Nova Turma' }}
-      </h2>
+            <app-step-configuracao-turma
+                [form]="configuracoesForm"
+                (onPrev)="prevCallback.emit()"
+                (onNext)="nextCallback.emit()">
+            </app-step-configuracao-turma>
 
-      <p>
-        Preencha as informações da turma
-      </p>
+        </ng-template>
+    </p-stepperPanel>
 
-    </div>
+    <p-stepperPanel header="Responsável">
+        <ng-template
+            pTemplate="content"
+            let-prevCallback="prevCallback">
 
-    <div class="field">
+            <app-step-responsavel
+                [trilhas]="trilhas"
+                [form]="responsavelForm"
+                (onPrev)="prevCallback.emit()"
+                (finish)="salvar()">
+            </app-step-responsavel>
 
-      <label for="nome">
-        Nome da Turma
-      </label>
+        </ng-template>
+    </p-stepperPanel>
 
-      <input id="nome" type="text" pInputText formControlName="nome" placeholder="Ex: Angular Avançado">
-
-      <small class="erro" *ngIf="campoInvalido('nome')">
-
-        Nome obrigatório
-
-      </small>
-
-    </div>
-
-    <div class="field">
-
-      <label for="code">
-        Código da Turma
-      </label>
-
-      <input id="code" type="text" pInputText formControlName="code" placeholder="Ex: ANGULAR">
-
-      <small class="erro" *ngIf="campoInvalido('code')">
-
-        Código obrigatório
-
-      </small>
-
-    </div>
-
-    <div class="field">
-
-      <label for="descricao">
-        Descrição
-      </label>
-
-      <textarea id="descricao" pInputTextarea rows="5" formControlName="descricao" placeholder="Descreva a trilha">
-      </textarea>
-
-      <small class="erro" *ngIf="campoInvalido('descricao')">
-
-        Descrição obrigatória
-
-      </small>
-
-    </div>
-
-    <div class="acoes">
-
-      <button pButton type="button" class="btn-cancelar" (click)="cancelar()">
-        Cancelar
-      </button>
-
-      <button pButton type="button" class="btn-salvar" (click)="salvar()">
-        Salvar
-      </button>
-
-    </div>
-
-  </div>
-
-</form>
+</p-stepper>
