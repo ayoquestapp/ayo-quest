@@ -53,10 +53,19 @@ export class AuthService {
     }
   }
 
-  logout() {
+  async logout() {
+ 
     this.currentProfile.set(null);
+
     localStorage.removeItem('profile');
-    return this.supabaseService.logout();
+    localStorage.removeItem('sb-access-token');
+    localStorage.removeItem('sb-refresh-token');
+    localStorage.removeItem('supabase.auth.token');
+    sessionStorage.clear();
+
+    await this.supabaseService.logout();
+
+    this.ready = false;
   }
 
   isAdmin() {
