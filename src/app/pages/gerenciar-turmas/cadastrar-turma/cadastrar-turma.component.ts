@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { PrimeNgModule } from '../../../core/primeNgModule';
-import { Trilha, Turma } from '../../../core/models/type';
+import { Trilha, Turma, TurmaCadastroDTO } from '../../../core/models/type';
 import { LoadingService } from '../../../core/services/loading.service';
 import { TurmasService } from '../../../core/services/turmas.service';
 import { StepConfiguracaoTurmaComponent } from './step-configuracao-turma/step-configuracao-turma.component';
@@ -29,11 +29,22 @@ export class CadastrarTurmaComponent implements OnInit {
 
   turmaForm!: FormGroup;
 
-  constructor(public loadingService: LoadingService, public turmaService: TurmasService, private fb: FormBuilder, private trilhaService: TrilhasService) { }
+  constructor(public loadingService: LoadingService, public turmaService: TurmasService, private fb: FormBuilder, private trilhaService: TrilhasService) {
+    this.initForm()
+   }
 
   ngOnInit(): void {
     this.getTrilhas();
 
+    console.log('Turma recebida:', this.turma);
+
+    if (this.turma) {
+      this.preencherFormulario();
+    }
+
+  }
+
+  private initForm() {
     this.turmaForm = this.fb.group({
       dadosBasicosForm: this.fb.group({
         txNomeTurma: ['', Validators.required],
@@ -48,13 +59,9 @@ export class CadastrarTurmaComponent implements OnInit {
       }),
       responsavelForm: this.fb.group({
         responsavel: [null, Validators.required],
-        trilhas: [[] as number[]]
+        trilhas: [[]]
       }),
     });
-
-    if (this.turma) {
-      this.preencherFormulario();
-    }
   }
 
   preencherFormulario() {
@@ -73,7 +80,7 @@ export class CadastrarTurmaComponent implements OnInit {
 
     this.responsavelForm.patchValue({
       responsavel: this.turma?.responsavelId,
-      trilhas: this.turma?.trilhasIds?.map((id) => ({ id })) || []
+      trilhas: this.turma?.trilhasIds || []
     });
   }
 
@@ -92,17 +99,43 @@ export class CadastrarTurmaComponent implements OnInit {
   }
 
   salvar() {
+    console.log('Iniciando processo de salvamento...');
 
     if (this.turmaForm.invalid) {
-
+      console.log('❌ FORM INVÁLIDO', this.turmaForm.value);
       this.turmaForm.markAllAsTouched();
-
       return;
     }
 
-    this.onSave.emit(
-      this.turmaForm.value
-    );
+    Object.keys(this.turmaForm.controls).forEach(key => {
+      const control = this.turmaForm.get(key) as FormGroup;
+      if (control.invalid) {
+        Object.keys(control.controls).forEach(subKey => {
+          const subControl = control.get(subKey);
+          if (subControl?.invalid) {
+            console.log(`Erro no campo: ${key} -> ${subKey}`, subControl.errors);
+          }
+        });
+      }
+    });
+
+    const dto = {
+      txNomeTurma: this.dadosBasicosForm.value.txNomeTurma,
+      codTurma: this.dadosBasicosForm.value.codTurma,
+      descricao: this.dadosBasicosForm.value.descricao,
+      quantidadeAlunos: this.configuracoesForm.value.quantidadeAlunos,
+      periodo: this.configuracoesForm.value.periodo,
+      stTurma: this.configuracoesForm.value.stTurma,
+      responsavel: this.responsavelForm.value.responsavel,
+      alunos: this.configuracoesForm.value.alunos.map((email: string) => ({
+        email
+      })),
+      trilhas: this.responsavelForm.value.trilhas
+    };
+
+    console.log('📦 DTO FINAL:', dto);
+
+    this.onSave.emit(dto);
   }
 
   cancelar() {

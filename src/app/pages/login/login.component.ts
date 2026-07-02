@@ -49,7 +49,7 @@ export class LoginComponent {
       return;
     }
 
-    this.notificationService.success('Login Realizado com sucesso.', 'SUCESSO')
+    this.notificationService.success('SUCESSO' , 'Login Realizado com sucesso.')
     await this.authService.loadProfile();
 
     this.router.navigate(['/app']);

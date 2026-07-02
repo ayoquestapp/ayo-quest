@@ -13,7 +13,7 @@
     <div class="p-field">
         <label>Responsável</label>
 
-        <p-dropdown [options]="usuarios" optionLabel="nome" optionValue="id" formControlName="responsavel" placeholder="Selecione um responsável">
+        <p-dropdown [options]="tutores" optionLabel="name" optionValue="id" formControlName="responsavel" placeholder="Selecione um responsável">
         </p-dropdown>
     </div>
 
@@ -30,15 +30,15 @@
         </span>
     </div>
 
+    
+    
     <div class="p-d-flex p-jc-between p-mt-4">
 
-        <p-button label="Voltar" icon="pi pi-angle-left" (onClick)="voltar()"
+        <button pButton type="button" label="Voltar" icon="pi pi-angle-left" (click)="voltar()"
             styleClass="p-button-secondary p-button-text">
-        </p-button>
+        </button>
 
-        <p-button label="Finalizar" icon="pi pi-check" (onClick)="finalizar()">
-        </p-button>
-
+        <button pButton type="button" label="Finalizar" (click)="finalizar()"></button>
     </div>
 
 </div>

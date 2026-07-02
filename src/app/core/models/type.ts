@@ -127,7 +127,7 @@ export interface Trilha {
   descricao: string;
   quantidadeModulos?: number;
   imagem?: string;
-  
+
 }
 
 export type QuestionType =
@@ -198,18 +198,49 @@ export interface Turma {
 
 export interface Profile {
 
-    id: string;
+  id: string;
 
-    email: string;
+  email: string;
 
-    name: string;
+  name: string;
 
-    role: 'ADMIN' | 'TUTOR' | 'STUDENT';
+  role: 'ADMIN' | 'TUTOR' | 'STUDENT';
 
-    xp: number;
+  xp: number;
 
-    level: number;
+  level: number;
 
-    avatarUrl?: string;
+  avatarUrl?: string;
 
+}
+
+export interface TurmaCadastroDTO {
+  txNomeTurma: string;
+  codTurma: string;
+  descricao: string;
+
+  quantidadeAlunos: number;
+  periodo: string;
+  stTurma: string;
+
+  responsavel: string;
+
+  alunos: AlunoConviteDTO[];
+
+  trilhas: number[];
+}
+
+export interface AlunoConviteDTO {
+  email: string,
+}
+
+export interface Tutor {
+  id: number;
+  nome: string;
+  
+}
+
+
+export interface PeriodoDTO{
+  periodos: string
 }

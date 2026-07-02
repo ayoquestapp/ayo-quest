@@ -1,7 +1,7 @@
-<app-header *ngIf="!isLogged"></app-header>
+<app-header *ngIf="showHeader"></app-header>
 <main 
   class="page-content" 
-  [class.no-header]="isLogged">
+  [class.no-header]="!showHeader">
   <router-outlet></router-outlet>
 </main>
-<app-footer *ngIf="isHomePage"></app-footer>
+<app-footer *ngIf="isHomePage && showHeader"></app-footer>

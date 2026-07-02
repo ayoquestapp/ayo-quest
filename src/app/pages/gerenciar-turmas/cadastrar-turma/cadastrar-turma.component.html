@@ -2,22 +2,15 @@
 
     <p-stepperPanel header="Dados Básicos">
         <ng-template pTemplate="content" let-nextCallback="nextCallback">
-            <app-step-dados-basicos
-                [form]="dadosBasicosForm"
-                (onNext)="nextCallback.emit()">
+            <app-step-dados-basicos [form]="dadosBasicosForm" (onNext)="nextCallback.emit()">
             </app-step-dados-basicos>
         </ng-template>
     </p-stepperPanel>
 
     <p-stepperPanel header="Configurações">
-        <ng-template
-            pTemplate="content"
-            let-prevCallback="prevCallback"
-            let-nextCallback="nextCallback">
+        <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback">
 
-            <app-step-configuracao-turma
-                [form]="configuracoesForm"
-                (onPrev)="prevCallback.emit()"
+            <app-step-configuracao-turma [form]="configuracoesForm" (onPrev)="prevCallback.emit()"
                 (onNext)="nextCallback.emit()">
             </app-step-configuracao-turma>
 
@@ -25,15 +18,9 @@
     </p-stepperPanel>
 
     <p-stepperPanel header="Responsável">
-        <ng-template
-            pTemplate="content"
-            let-prevCallback="prevCallback">
+        <ng-template pTemplate="content" let-prevCallback="prevCallback">
 
-            <app-step-responsavel
-                [trilhas]="trilhas"
-                [form]="responsavelForm"
-                (onPrev)="prevCallback.emit()"
-                (finish)="salvar()">
+            <app-step-responsavel *ngIf="turmaForm" [trilhas]="trilhas" [form]="responsavelForm" (finish)="salvar()">
             </app-step-responsavel>
 
         </ng-template>

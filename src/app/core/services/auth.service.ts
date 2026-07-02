@@ -1,27 +1,58 @@
 import { Injectable, signal } from '@angular/core';
-
-import { SupabaseService } from './supabase.service';
-import { Profile, User } from '../models/type';
-import { UserService } from './user.service';
 import { firstValueFrom } from 'rxjs';
 
+import { SupabaseService } from './supabase.service';
+import { UserService } from './user.service';
+import { Profile } from '../models/type';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
+
   private ready = false;
+
   currentProfile = signal<Profile | null>(null);
 
   constructor(
     private supabaseService: SupabaseService,
     private userService: UserService
   ) {
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('profile');
 
-      if (stored) {
-        this.currentProfile.set(JSON.parse(stored));
+    this.supabaseService.onAuthChange(async (event: any, session: any) => {
+
+      console.log('[SUPABASE]', event);
+
+      if (!session) {
+
+        this.currentProfile.set(null);
+        localStorage.removeItem('profile');
+
+        this.ready = true;
+
+        return;
       }
-    }
+
+      try {
+
+        const stored = localStorage.getItem('profile');
+
+        if (stored) {
+          this.currentProfile.set(JSON.parse(stored));
+        } else {
+          await this.loadProfile();
+        }
+
+      } catch {
+
+        await this.loadProfile();
+
+      }
+
+      this.ready = true;
+
+    });
+
   }
 
   isReady() {
@@ -29,43 +60,67 @@ export class AuthService {
   }
 
   async initAuth() {
+
     const { data } = await this.supabaseService.getSession();
 
     if (!data.session) {
+
+      this.currentProfile.set(null);
+
+      localStorage.removeItem('profile');
+
+      this.ready = true;
+
       return;
     }
 
+    const stored = localStorage.getItem('profile');
+
+    if (stored) {
+
+      this.currentProfile.set(JSON.parse(stored));
+
+    } else {
+
+      await this.loadProfile();
+
+    }
+
+    this.ready = true;
   }
 
   async loadProfile() {
+
     const profile = await firstValueFrom(
       this.userService.getMyProfile()
     );
 
     this.setProfile(profile);
+
   }
 
   setProfile(profile: Profile) {
+
     this.currentProfile.set(profile);
 
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('profile', JSON.stringify(profile));
-    }
+    localStorage.setItem(
+      'profile',
+      JSON.stringify(profile)
+    );
+
   }
 
   async logout() {
- 
-    this.currentProfile.set(null);
-
-    localStorage.removeItem('profile');
-    localStorage.removeItem('sb-access-token');
-    localStorage.removeItem('sb-refresh-token');
-    localStorage.removeItem('supabase.auth.token');
-    sessionStorage.clear();
 
     await this.supabaseService.logout();
 
+    // Segurança caso o evento SIGNED_OUT demore
+    this.currentProfile.set(null);
+
+    localStorage.removeItem('profile');
+
     this.ready = false;
+
   }
 
   isAdmin() {
@@ -79,4 +134,5 @@ export class AuthService {
   isStudent() {
     return this.currentProfile()?.role === 'STUDENT';
   }
+
 }

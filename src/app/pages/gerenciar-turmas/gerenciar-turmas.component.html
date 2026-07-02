@@ -11,20 +11,29 @@
 
         </app-loading>
 
-        <div class="lista-turmas">
+        <div class="lista-turmas" *ngIf="view === 'lista'">
 
-            <div class="turma-card" *ngFor="let turma of turmas">
+            <div class="turma-card" *ngFor="let turma of turmas" >
                 <div class="icon">
-                    <i class="pi pi-pi-graduation-cap"></i>
+                    <i class="pi pi-graduation-cap"></i>
                 </div>
 
                 <div class="conteudo">
-                    <h3>{{ turma.nome }}</h3>
-
+                    <h3>{{ turma.txNomeTurma }}</h3>
                     <div class="meta">
                         <span>
-                            <i class="pi pi-book"></i>
+                            <i class="fa-solid fa-school"></i>
+                            Quantidade de alunos: 
                             {{ turma.quantidadeAlunos || 0 }}
+                        </span>
+                        <span>
+                            <i class="resp fa-solid fa-user-check"></i>
+                            Responsável: 
+                            {{ turma.responsavel.nome}}
+                        </span>
+                        <span>
+                            <i class="fa-solid fa-at"></i>
+                            {{ turma.responsavel.email}}
                         </span>
                     </div>
                 </div>
@@ -44,13 +53,13 @@
 
             </div>
 
-            <div *ngIf="view === 'form'">
+            
+        </div>
+        <div *ngIf="view === 'form'">
 
-                <app-cadastrar-turma [turma]="turmaSelecionada" (onSave)="salvarTurma($event)"
-                    (onCancel)="cancelar()">
-                </app-cadastrar-turma>
-
-            </div>
+            <app-cadastrar-turma [turma]="turmaSelecionada" (onSave)="salvarTurma($event)"
+                (onCancel)="cancelar()">
+            </app-cadastrar-turma>
 
         </div>
     </div>

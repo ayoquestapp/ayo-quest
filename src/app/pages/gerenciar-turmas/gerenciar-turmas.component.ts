@@ -40,11 +40,12 @@ export class GerenciarTurmasComponent implements OnInit {
   public carregarTurmas () {
     this.loadingService.show();
 
-    // this.turmasService.listar().subscribe({
-    //   next: (data) => {
-    //     this.turmas = data;
-    //   }
-    // });
+    this.turmaService.listar().subscribe({
+      next: (data) => {
+        console.log("data:" , data)
+        this.turmas = data;
+      }
+    });
 
     setTimeout(() => {
       this.loadingService.hide();
@@ -57,12 +58,22 @@ export class GerenciarTurmasComponent implements OnInit {
   }
 
   public excluirTurma (turma: any) {
-    if (confirm(`Tem certeza que deseja excluir a turma ${turma.nome}?`)) {
-     
+    if (confirm(`Tem certeza que deseja excluir a turma ${turma.txNomeTurma}?`)) {
+      this.turmaService.remover(turma.id).subscribe({
+        next: () => {
+          this.carregarTurmas()
+          this.view = 'lista';
+        },
+        error: (err) => {
+          console.error("erro ao deletar")
+        }
+
+      })
     }
   }
 
   salvarTurma(turma: any) {
+    console.log('gerenciar')
 
     if (this.turmaSelecionada?.id) {
 
